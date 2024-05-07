@@ -2,6 +2,10 @@
 
 Welcome to Zrilla, your go-to app for all things horror and thriller movies! Whether you're a seasoned horror aficionado or just dipping your toes into the chilling waters of the genre, Zrilla has everything you need to keep track of your favorite films, rate them, and share your thoughts with fellow horror enthusiasts. With Zrilla, you can dive into the darkest corners of cinema and emerge unscathed... or maybe not.
 
+## User Story
+
+- **As a user** of the Zrilla Horror/Thriller app, I want to discover new horror and thriller movies, save and review my watched movies, and share my reviews with the community.
+
 ## Features
 
 - **Movie Database:** Browse through a vast collection of horror and thriller movies. From classic cult favorites to the latest spine-tingling releases, Zrilla has it all.
