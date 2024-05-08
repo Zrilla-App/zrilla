@@ -33,6 +33,7 @@ function fetchMoviesBySearch(query) {
         });
 }
 
+// ******************************************************************************************************************************************************
 
 // Function to display movies on the page
 function displayMovies(movies) {
@@ -61,6 +62,8 @@ function displayMovies(movies) {
         behavior: 'smooth'
     });
 }
+
+// ******************************************************************************************************************************************************
 
 // Function to append movies to the existing list
 function appendMovies(movies) {
@@ -89,6 +92,8 @@ function appendMovies(movies) {
     });
 }
 
+// ******************************************************************************************************************************************************
+
 // Function to display "Show More" button
 function displayShowMoreButton() {
     // Remove any existing "Show More" button
@@ -112,6 +117,7 @@ function displayShowMoreButton() {
     movieCardsContainer.parentNode.appendChild(showMoreButton);
 }
 
+// ******************************************************************************************************************************************************
 
 // Event listener for search button click
 document.getElementById('searchButton').addEventListener('click', function() {
@@ -122,8 +128,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
     }
 });
 
-
-
+// ******************************************************************************************************************************************************
 
 // Function to display movies on the page
 function displayMovies(movies) {
@@ -151,6 +156,8 @@ function displayMovies(movies) {
     });
 }
 
+// ******************************************************************************************************************************************************
+
 // Event listener for search button click
 document.getElementById('searchButton').addEventListener('click', function() {
     const searchInput = document.getElementById('searchInput').value.trim();
@@ -159,6 +166,8 @@ document.getElementById('searchButton').addEventListener('click', function() {
         fetchMoviesBySearch(searchInput);
     }
 });
+
+// ******************************************************************************************************************************************************
 
 // Function to display more details for the clicked movie card
 function expandMovieDetails(card, movie) {
@@ -178,11 +187,15 @@ function expandMovieDetails(card, movie) {
     card.innerHTML = detailsContent;
 }
 
+// ******************************************************************************************************************************************************
+
 // Function to expand card body when "Details" button is clicked
 function expandCardBody(card) {
     const cardBody = card.querySelector('.card-body');
     cardBody.classList.add('expanded'); // Remove height restriction
 }
+
+// ******************************************************************************************************************************************************
 
 // Event listener for "Details" button click
 document.addEventListener('click', function(event) {
@@ -194,6 +207,7 @@ document.addEventListener('click', function(event) {
     }
 });
 
+// ******************************************************************************************************************************************************
 
 // Function to fetch movie details by ID
 function fetchMovieDetails(card, movieId) {
@@ -214,9 +228,7 @@ function fetchMovieDetails(card, movieId) {
         });
 }
 
-
 // ******************************************************************************************************************************************************
-
 
 // Event listener for "Add to Watchlist" button click
 document.addEventListener('click', function(event) {
