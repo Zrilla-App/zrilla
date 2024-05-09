@@ -102,9 +102,11 @@ function displayShowMoreButton() {
         existingShowMoreButton.remove();
     }
 
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('text-center', 'mt-3', 'mb-5');
     const showMoreButton = document.createElement('button');
     showMoreButton.id = 'showMoreButton';
-    showMoreButton.classList.add('btn', 'btn-primary', 'mt-3', 'show-more-button');
+    showMoreButton.classList.add('btn', 'btn-primary', 'show-more-button');
     showMoreButton.textContent = 'Show More';
     showMoreButton.onclick = function() {
         currentPage++; // Increment current page
@@ -113,8 +115,10 @@ function displayShowMoreButton() {
             fetchMoviesBySearch(searchInput);
         }
     };
+    buttonContainer.appendChild(showMoreButton);
+
     const movieCardsContainer = document.getElementById('movieCards');
-    movieCardsContainer.parentNode.appendChild(showMoreButton);
+    movieCardsContainer.parentNode.appendChild(buttonContainer);
 }
 
 // ******************************************************************************************************************************************************
@@ -125,6 +129,17 @@ document.getElementById('searchButton').addEventListener('click', function() {
     if (searchInput !== '') {
         currentPage = 1; // Reset current page when initiating a new search
         fetchMoviesBySearch(searchInput);
+    }
+});
+
+// Event listener for "keypress" event on search input
+document.getElementById('searchInput').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        const searchInput = document.getElementById('searchInput').value.trim();
+        if (searchInput !== '') {
+            currentPage = 1; // Reset current page when initiating a new search
+            fetchMoviesBySearch(searchInput);
+        }
     }
 });
 
@@ -229,20 +244,6 @@ function fetchMovieDetails(card, movieId) {
 }
 
 // ******************************************************************************************************************************************************
-
-// Event listener for "Add to Watchlist" button click
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('add-to-watchlist-button')) {
-        const movieId = event.target.dataset.movieId;
-        addToWatchlist(movieId);
-    }
-});
-
-// Function to add a movie to the watchlist
-function addToWatchlist(movieId) {
-    // Implement logic to add the movie to the user's watchlist
-    console.log(`Added movie with ID ${movieId} to watchlist`);
-}
 
 // Event listener for "Start Review" button click
 document.addEventListener('click', function(event) {
