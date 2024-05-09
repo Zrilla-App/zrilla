@@ -1,7 +1,15 @@
 body {
     background-color: #191133;
     font-family: Arial, sans-serif;
-    color: whitesmoke;
+    color: rgb(92, 92, 92);
     margin: 0;
     padding: 0;
+}
+.backCard {
+    background-color: rgb(161, 54, 54);
+    
+}
+
+.dark-Text {
+    color: black;
 }

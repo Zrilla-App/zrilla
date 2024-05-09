@@ -47,9 +47,9 @@ function displayMovies(movies) {
             <div class="card">
                 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
                 <div class="card-body">
-                    <h5 class="card-title">${movie.title}</h5>
+                    <h5 class="card-title dark-Text">${movie.title}</h5>
                     <p class="card-text">${movie.overview}</p>
-                    <button class="btn btn-primary details-button" data-movie-id="${movie.id}">Details</button>
+                    <button class="btn btn-primary backCard" data-movie-id="${movie.id}">Back</button>
                 </div>
             </div>
         `;
@@ -142,8 +142,7 @@ function displayMovies(movies) {
             <div class="card">
                 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
                 <div class="card-body">
-                    <h5 class="card-title">${movie.title}</h5>
-                    <p class="card-text">${movie.overview}</p>
+                    <h5 class="card-title Dark-text">${movie.title}</h5>
                     <div class="btn-group" role="group">
                         <button class="btn btn-primary details-button" data-movie-id="${movie.id}">Details</button>
                         <button class="btn btn-success add-to-watchlist-button" data-movie-id="${movie.id}">Add to Watchlist</button>
@@ -180,6 +179,7 @@ function expandMovieDetails(card, movie) {
             <p>Release Date: ${movie.release_date}</p>
             <p>Vote Average: ${movie.vote_average}</p>
             <!-- Add more movie details here -->
+            <button class="btn btn-primary backCard-button" data-movie-id="${movie.id}">Back</button>
         </div>
     `;
 
@@ -202,10 +202,37 @@ document.addEventListener('click', function(event) {
     if (event.target.classList.contains('details-button')) {
         const card = event.target.closest('.movie-card'); // Find the closest movie card
         const movieId = event.target.dataset.movieId;
+        cla
         fetchMovieDetails(card, movieId); // Pass the card and movie ID to fetch movie details
         expandCardBody(card); // Expand the card body
     }
 });
+
+document.addEventListener('click', function(event) { //back button function
+    console.log("back button clicked")
+    if (event.target.classList.contains('backCard')) {
+        const card = event.target.closest('.movie-card'); // Find the closest movie card
+        const movieId = event.target.dataset.movieId;
+        fetchMovieDetails(card, movieId); // Pass the card and movie ID to fetch movie details
+        card.classList.add('dark-Text');
+        
+        card.innerHTML = `
+            <div class="card">
+                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
+                <div class="card-body">
+                    <h5 class="card-title">${movie.title}</h5>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary details-button" data-movie-id="${movie.id}">Details</button>
+                        <button class="btn btn-success add-to-watchlist-button" data-movie-id="${movie.id}">Add to Watchlist</button>
+                        <button class="btn btn-info start-review-button" data-movie-id="${movie.id}">Start Review</button>
+                    </div>
+                    <p class="card-text">${movie.overview}</p>
+                </div>
+            </div>
+        `;
+    }
+});
+
 
 // ******************************************************************************************************************************************************
 
