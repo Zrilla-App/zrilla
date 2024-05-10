@@ -7,7 +7,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assests/styles.css">
+    <!-- <link rel="stylesheet" href="./assests/styles.css"> -->
+    <link rel="stylesheet" href="./assests/watchlist.css">
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -36,17 +37,39 @@
     </div>
 </nav>
 
-    <div id="watchlistContainer">
-        <!-- Watchlist will be dynamically added here -->
+
+<div id="generalWatchlist" class="watchlist-container">
+    <div class="watchlist-title">General Watchlist</div>
+    <div class="watchlist-items">
+        <!-- Watchlist items will be dynamically added here -->
     </div>
+</div>
+
+<div id="horrorWatchlist" class="watchlist-container">
+    <div class="watchlist-title">Horror Watchlist</div>
+    <div class="watchlist-items">
+        <!-- Watchlist items will be dynamically added here -->
+    </div>
+</div>
+
+<div id="thrillerWatchlist" class="watchlist-container">
+    <div class="watchlist-title">Thriller Watchlist</div>
+    <div class="watchlist-items">
+        <!-- Watchlist items will be dynamically added here -->
+    </div>
+</div>
+
 
 <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<!-- SortableJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
 
 <!-- Custom JavaScript -->
 <script src="./assests/watchlist.js"></script>    
+
 </body>
 </html>
