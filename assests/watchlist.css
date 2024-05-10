@@ -1,0 +1,35 @@
+body {
+    background-color: #191133;
+    font-family: Arial, sans-serif;
+    color: whitesmoke;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for movie items */
+.movie-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: grab; /* Cursor style for draggable items */
+    background-color: #f0f0f0; /* Background color */
+}
+
+/* Hover effect */
+.movie-item:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+    background-color: #e0e0e0; /* Darker background color on hover */
+}
+
+.watch-card {
+    padding: 5px; /* Smaller padding */
+    margin-bottom: 10px; /* Space between items */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: grab; /* Cursor style for draggable items */
+    background-color: #5c0b0b; /* Background color */
+    
+
+}
