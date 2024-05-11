@@ -30,6 +30,16 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: grab; /* Cursor style for draggable items */
     background-color: #5c0b0b; /* Background color */
+    width: 25%; /* Width of the card */
     
+
+}
+
+.watchlist-title {
+    font-size: 24px; /* Larger font size */
+    margin-bottom: 10px; /* Space between title and items */
+    background-color: #837878; /* Background color */
+    width: 30%; /* Width of the card */
+    border-radius: 5px;
 
 }

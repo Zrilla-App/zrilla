@@ -23,12 +23,7 @@ function displayWatchlist() {
 
 // ************************************************************************************************************************************************************************************************
 
-// Determine the category for each movie based on its properties
-function determineCategory(movie) {
-    // Example logic: categorize movies as 'horror' or 'thriller' based on their title or other properties
-    // You can customize this logic based on your requirements
-    return movie.title.toLowerCase().includes('horror') ? 'horror' : 'thriller';
-}
+
 
 // ************************************************************************************************************************************************************************************************
 
@@ -42,11 +37,11 @@ function initializeSortable() {
             ghostClass: 'sortable-ghost',
             fallbackClass: 'sortable-fallback',
             swapThreshold: 0.65,
-            multiDrag: true,
-            multiDragKey: 'ctrlKey',
+            // multiDrag: true,
+            // multiDragKey: 'ctrlKey',
             group: 'nested',
             sort: true,
-            nested: true
+            nested: true,
         });
     });
 }
