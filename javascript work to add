@@ -123,8 +123,6 @@ document.getElementById('searchButton').addEventListener('click', function() {
 });
 
 
-
-
 // Function to display movies on the page
 function displayMovies(movies) {
     const movieCardsContainer = document.getElementById('movieCards');

@@ -8,6 +8,11 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assests/styles.css">
+    <!-- bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <!-- Font Awesome -->
+    <!-- Important custom CSS -->
+
 </head>
 <body>
 
@@ -44,8 +49,8 @@
     <!-- Add more content here -->
 
 
-
-
+<!-- Modal div card here -->
+<div class="modal"></div>
 <!-- search bar for movies and tv shows -->
 
 <div class="container mt-5">
@@ -61,11 +66,33 @@
     </div>
 </div>
 
+<div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <section class="modal-card-body">
+            <h1 class="title" id="title"></h1>
+            <div id="poster"></div>
+            <p class="card-text" id="movieDetails"></p>
+            <p id="releaseDate"></p>
+            <p id="voteAverage"></p>
+            <p id="userRating"></p>
+             <!-- Add more movie details here -->
+        </section> 
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+
 <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Custom JavaScript -->
 <script src="./assests/script.js"></script>
+<script src="./assests/details.js"></script>
 </body>
 </html>

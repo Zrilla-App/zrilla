@@ -10,6 +10,11 @@ body {
     
 }
 
-.dark-Text {
-    color: black;
-}
+#rating span.active {
+        color: orange !important;
+    }
+  
+  #rating span {
+    font-size: 42px !important;
+    cursor: pointer !important;
+  }

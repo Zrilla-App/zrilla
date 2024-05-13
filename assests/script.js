@@ -45,12 +45,15 @@ function displayMovies(movies) {
         card.classList.add('col-md-4', 'mb-4', 'movie-card');
         card.innerHTML = `
             <div class="card">
-                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-                <div class="card-body">
-                    <h5 class="card-title dark-Text">${movie.title}</h5>
-                    <p class="card-text">${movie.overview}</p>
-                    <button class="btn btn-primary backCard" data-movie-id="${movie.id}">Back</button>
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
+            <div class="card-body">
+            <h5 class="card-title">${movie.title}</h5>
+            <div class="btn-group" role="group">
+                <button class="btn btn-primary details-button js-modal-trigger" data-target="modal-js-example" data-movie-info="${JSON.stringify(movie).replace(/"/g, '&quot;')}">Details</button> 
+                <button class="btn btn-success add-to-watchlist-button" data-movie-id="${movie.id}" data-movie-title="${movie.title}" data-movie-vote="${movie.vote_average}">Add to Watchlist</button>
+                <button class="btn btn-info start-review-button" data-movie-id="${movie.id}">Start Review</button> 
                 </div>
+            </div>
             </div>
         `;
         movieCardsContainer.appendChild(card);
@@ -62,6 +65,7 @@ function displayMovies(movies) {
         behavior: 'smooth'
     });
 }
+
 
 // ******************************************************************************************************************************************************
 
@@ -77,8 +81,9 @@ function appendMovies(movies) {
                 <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
                 <div class="card-body">
                     <h5 class="card-title">${movie.title}</h5>
-                    <p class="card-text">${movie.overview}</p>
-                    <button class="btn btn-primary details-button" data-movie-id="${movie.id}">Details</button>
+                    <button class="btn btn-primary details-button js-modal-trigger" data-target="modal-js-example" data-movie-info="${JSON.stringify(movie).replace(/"/g, '&quot;')}">Details</button> 
+                    <button class="btn btn-success add-to-watchlist-button" data-movie-id="${movie.id}" data-movie-title="${movie.title}" data-movie-vote="${movie.vote_average}">Add to Watchlist</button>
+                    <button class="btn btn-info start-review-button" data-movie-id="${movie.id}">Start Review</button> 
                 </div>
             </div>
         `;
@@ -102,9 +107,11 @@ function displayShowMoreButton() {
         existingShowMoreButton.remove();
     }
 
+    const buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('text-center', 'mt-3', 'mb-5');
     const showMoreButton = document.createElement('button');
     showMoreButton.id = 'showMoreButton';
-    showMoreButton.classList.add('btn', 'btn-primary', 'mt-3', 'show-more-button');
+    showMoreButton.classList.add('btn', 'btn-primary', 'show-more-button');
     showMoreButton.textContent = 'Show More';
     showMoreButton.onclick = function() {
         currentPage++; // Increment current page
@@ -113,9 +120,34 @@ function displayShowMoreButton() {
             fetchMoviesBySearch(searchInput);
         }
     };
+    buttonContainer.appendChild(showMoreButton);
+
     const movieCardsContainer = document.getElementById('movieCards');
-    movieCardsContainer.parentNode.appendChild(showMoreButton);
+    movieCardsContainer.parentNode.appendChild(buttonContainer);
 }
+
+// ******************************************************************************************************************************************************
+
+// Event listener for search button click
+document.getElementById('searchButton').addEventListener('click', function() {
+    const searchInput = document.getElementById('searchInput').value.trim();
+    if (searchInput !== '') {
+        currentPage = 1; // Reset current page when initiating a new search
+        fetchMoviesBySearch(searchInput);
+    }
+});
+
+// Event listener for "keypress" event on search input
+document.getElementById('searchInput').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        const searchInput = document.getElementById('searchInput').value.trim();
+        if (searchInput !== '') {
+            currentPage = 1; // Reset current page when initiating a new search
+            fetchMoviesBySearch(searchInput);
+        }
+    }
+});
+
 
 // ******************************************************************************************************************************************************
 
@@ -130,66 +162,40 @@ document.getElementById('searchButton').addEventListener('click', function() {
 
 // ******************************************************************************************************************************************************
 
-// Function to display movies on the page
-function displayMovies(movies) {
-    const movieCardsContainer = document.getElementById('movieCards');
-    movieCardsContainer.innerHTML = ''; // Clear previous movie cards
-
-    movies.forEach(movie => {
-        const card = document.createElement('div');
-        card.classList.add('col-md-4', 'mb-4', 'movie-card');
-        card.innerHTML = `
-            <div class="card">
-                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-                <div class="card-body">
-                    <h5 class="card-title Dark-text">${movie.title}</h5>
-                    <div class="btn-group" role="group">
-                        <button class="btn btn-primary details-button" data-movie-id="${movie.id}">Details</button>
-                        <button class="btn btn-success add-to-watchlist-button" data-movie-id="${movie.id}">Add to Watchlist</button>
-                        <button class="btn btn-info start-review-button" data-movie-id="${movie.id}">Start Review</button>
-                    </div>
-                </div>
-            </div>
-        `;
-        movieCardsContainer.appendChild(card);
-    });
-}
-
-// ******************************************************************************************************************************************************
-
-// Event listener for search button click
-document.getElementById('searchButton').addEventListener('click', function() {
-    const searchInput = document.getElementById('searchInput').value.trim();
-    if (searchInput !== '') {
-        currentPage = 1; // Reset current page when initiating a new search
-        fetchMoviesBySearch(searchInput);
-    }
-});
-
-// ******************************************************************************************************************************************************
-
-// Function to display more details for the clicked movie card
-function expandMovieDetails(card, movie) {
+// Function to display more details for the clicked movie card WORKING
+// function expandMovieDetails(card, movie) {
     // Construct the HTML content for the expanded details
-    const detailsContent = `
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-        <div class="card-body">
-            <h5 class="card-title">${movie.title}</h5>
-            <p class="card-text">${movie.overview}</p>
-            <p>Release Date: ${movie.release_date}</p>
-            <p>Vote Average: ${movie.vote_average}</p>
-            <!-- Add more movie details here -->
-            <button class="btn btn-primary backCard-button" data-movie-id="${movie.id}">Back</button>
-        </div>
-    `;
+    // const detailsContent = `
+    //     <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
+    //         <div class="modal-background"></div>
+    //             <div class="modal-card">
+    //                 <header class="modal-card-head">
+    //                 <h5 class="modal-card-title">${movie.title}</h5> <!-- Used to be p -->
+    //                     <button class="delete" aria-label="close"></button>
+    //                 </header>
+    //                 <section class="modal-card-body">
+    //                     <p class="card-text">${movie.overview}</p>
+    //                     <p>Release Date: ${movie.release_date}</p>
+    //                     <p>Vote Average: ${movie.vote_average}</p>
+    //                     <!-- Add more movie details here -->
+    //                 </section>
+    //                     <footer class="modal-card-foot">
+    //                         <div class="buttons">
+    //                             <button class="button is-success">Save changes</button>
+    //                             <button class="button">Cancel</button>
+    //                         </div>
+    //                     </footer>
+    //                 </div>
+    //             </div>
+    // `;
 
     // Update the content of the clicked card with the expanded details
-    card.innerHTML = detailsContent;
-}
+//     card.innerHTML = detailsContent;
+// }
 
 // ******************************************************************************************************************************************************
 
-// Function to expand card body when "Details" button is clicked
+//Function to expand card body when "Details" button is clicked
 function expandCardBody(card) {
     const cardBody = card.querySelector('.card-body');
     cardBody.classList.add('expanded'); // Remove height restriction
@@ -197,42 +203,15 @@ function expandCardBody(card) {
 
 // ******************************************************************************************************************************************************
 
-// Event listener for "Details" button click
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('details-button')) {
-        const card = event.target.closest('.movie-card'); // Find the closest movie card
-        const movieId = event.target.dataset.movieId;
-        cla
-        fetchMovieDetails(card, movieId); // Pass the card and movie ID to fetch movie details
-        expandCardBody(card); // Expand the card body
-    }
-});
-
-document.addEventListener('click', function(event) { //back button function
-    console.log("back button clicked")
-    if (event.target.classList.contains('backCard')) {
-        const card = event.target.closest('.movie-card'); // Find the closest movie card
-        const movieId = event.target.dataset.movieId;
-        fetchMovieDetails(card, movieId); // Pass the card and movie ID to fetch movie details
-        card.classList.add('dark-Text');
-        
-        card.innerHTML = `
-            <div class="card">
-                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${movie.title}</h5>
-                    <div class="btn-group" role="group">
-                        <button class="btn btn-primary details-button" data-movie-id="${movie.id}">Details</button>
-                        <button class="btn btn-success add-to-watchlist-button" data-movie-id="${movie.id}">Add to Watchlist</button>
-                        <button class="btn btn-info start-review-button" data-movie-id="${movie.id}">Start Review</button>
-                    </div>
-                    <p class="card-text">${movie.overview}</p>
-                </div>
-            </div>
-        `;
-    }
-});
-
+// // Event listener for "Details" button click
+// document.addEventListener('click', function(event) {
+//     if (event.target.classList.contains('details-button')) {
+//         const card = event.target.closest('.movie-card'); // Find the closest movie card
+//         const movieId = event.target.dataset.movieId;
+//         fetchMovieDetails(card, movieId); // Pass the card and movie ID to fetch movie details
+//         expandCardBody(card); // Expand the card body
+//     }
+// });
 
 // ******************************************************************************************************************************************************
 
@@ -257,20 +236,6 @@ function fetchMovieDetails(card, movieId) {
 
 // ******************************************************************************************************************************************************
 
-// Event listener for "Add to Watchlist" button click
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('add-to-watchlist-button')) {
-        const movieId = event.target.dataset.movieId;
-        addToWatchlist(movieId);
-    }
-});
-
-// Function to add a movie to the watchlist
-function addToWatchlist(movieId) {
-    // Implement logic to add the movie to the user's watchlist
-    console.log(`Added movie with ID ${movieId} to watchlist`);
-}
-
 // Event listener for "Start Review" button click
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('start-review-button')) {
@@ -284,3 +249,54 @@ function startReview(movieId) {
     // Implement logic to navigate to the review page for the specified movie
     console.log(`Started review for movie with ID ${movieId}`);
 }
+
+// ******************************************************************************************************************************************************
+
+// Event listener for "Add to Watchlist" button click
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('add-to-watchlist-button')) {
+        console.log("event.target", event.target);
+        const movieId = event.target.dataset.movieId;
+        const title = event.target.dataset.movieTitle;
+        const vote_average = event.target.dataset.movieVote;
+        addToWatchlist(movieId, title, vote_average);
+    }
+});
+
+// Function to add a movie to the watchlist
+function addToWatchlist(movieId, title, vote_average) {
+    // Retrieve existing watchlist from localStorage
+    const watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+
+    // Check if the movie is already in the watchlist
+    if (watchlist.some(movie => movie.id === movieId)) {
+        console.log('Movie already exists in the watchlist');
+    } else {
+        // Add the movie to the watchlist with rating and vote average
+        watchlist.push({ id: movieId, title: title, vote_average: vote_average });
+        console.log(watchlist);
+        localStorage.setItem('watchlist', JSON.stringify(watchlist));
+        console.log('Movie added to watchlist:', title);
+    }
+}
+
+
+// Function to display movies on the watchlist page
+function displayWatchlist() {
+    // Retrieve watchlist from localStorage
+    const watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+    
+    // Reference to the watchlist container in HTML
+    const watchlistContainer = document.getElementById('watchlistContainer');
+
+    // Clear previous watchlist items
+    watchlistContainer.innerHTML = '';
+
+    // Display each movie in the watchlist
+    watchlist.forEach(movie => {
+        const movieElement = document.createElement('div');
+        movieElement.textContent = `${movie.title} - Vote Average: ${movie.voteAverage}`;
+        watchlistContainer.appendChild(movieElement);
+    });
+}
+
