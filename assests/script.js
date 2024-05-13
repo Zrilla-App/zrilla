@@ -39,7 +39,6 @@ function fetchMoviesBySearch(query) {
         });
 }
 
-
 // Function to display movies and shows on the page
 function displayMoviesAndShows(results) {
     const movieCardsContainer = document.getElementById('movieCards');
@@ -50,17 +49,16 @@ function displayMoviesAndShows(results) {
         card.classList.add('col-md-4', 'mb-4', 'movie-card');
         card.innerHTML = `
             <div class="card">
-                <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" class="card-img-top" alt="${result.title || result.name}">
-                <div class="card-body">
-                    <h5 class="card-title">${result.title || result.name}</h5>
-                    <p class="card-text">${result.overview}</p>
-                    <p>Type: ${result.media_type === 'movie' ? 'Movie' : 'TV Show'}</p>
-                    <div class="btn-group" role="group">
-                        <button class="btn btn-primary details-button" data-movie-id="${result.id}" data-media-type="${result.media_type}">Details</button>
-                        <button class="btn btn-success add-to-watchlist-button" data-movie-id="${result.id}" data-movie-title="${result.title || result.name}" data-movie-vote="${result.vote_average}" data-media-type="${result.media_type}">Add to Watchlist</button>
-                        <button class="btn btn-info start-review-button" data-movie-id="${result.id}" data-media-type="${result.media_type}">Start Review</button>
-                    </div>
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
+            <div class="card-body">
+                <h5 class="card-title">${movie.title}</h5>
+                <p class="card-text">${movie.overview}</p>
+                <div class="btn-group" role="group">
+                <button class="btn btn-primary details-button" data-movie-id="${movie.id}">Details</button>
+                <button class="btn btn-success add-to-watchlist-button" data-movie-id="${movie.id}" data-movie-title="${movie.title}" data-movie-vote="${movie.vote_average}">Add to Watchlist</button>
+                <button class="btn btn-info start-review-button" data-movie-id="${movie.id}">Start Review</button>
                 </div>
+            </div>
             </div>
         `;
         movieCardsContainer.appendChild(card);
@@ -178,14 +176,21 @@ document.addEventListener('click', function(event) {
     if (event.target.classList.contains('details-button')) {
         const card = event.target.closest('.movie-card'); // Find the closest movie card
         const movieId = event.target.dataset.movieId;
-        fetchMovieDetails(card, movieId); // Pass the card and movie ID to fetch movie details
+        const mediaType = event.target.dataset.mediaType;
+        fetchMovieDetails(card, movieId, mediaType); // Pass the card, movie ID, and media type to fetch movie details
         expandCardBody(card); // Expand the card body
     }
 });
 
 // Function to fetch movie details by ID
-function fetchMovieDetails(card, movieId) {
-    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+function fetchMovieDetails(card, movieId, mediaType) {
+    let url;
+    if (mediaType === 'movie') {
+        url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+    } else {
+        url = `https://api.themoviedb.org/3/tv/${movieId}?api_key=${apiKey}`;
+    }
+
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -261,3 +266,8 @@ function displayWatchlist() {
         watchlistContainer.appendChild(movieElement);
     });
 }
+
+
+
+// ******************************************************************************************************************************************************
+

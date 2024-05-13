@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <!-- <link rel="stylesheet" href="./assests/styles.css"> -->
+    <link rel="stylesheet" href="./assests/watchlist.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Zrilla</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./index.html">Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./watchlist.html">Watchlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div id="folderActions">
+    <button id="addFolderButton">Add Folder</button>
+</div>
+
+<div id="generalWatchlist" class="watchlist-container">
+    <div class="watchlist-title">Just Watched</div>
+    <div class="watchlist-items">
+        <!-- Watchlist items will be dynamically added here -->
+    </div>
+</div>
+
+<div id="horrorWatchlist" class="watchlist-container">
+    <div class="watchlist-title">Top 10 Favorite</div>
+    <div class="watchlist-items">
+        <!-- Watchlist items will be dynamically added here -->
+    </div>
+</div>
+
+<div id="thrillerWatchlist1" class="watchlist-container">
+    <div class="watchlist-title">Best Jumpscare Movies</div>
+    <div class="watchlist-items">
+        <!-- Watchlist items will be dynamically added here -->
+    </div>
+</div>
+
+<div id="thrillerWatchlist2" class="watchlist-container">
+    <div class="watchlist-title">Goriest Movies</div>
+    <div class="watchlist-items">
+        <!-- Watchlist items will be dynamically added here -->
+    </div>
+</div>
+
+
+
+
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- SortableJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script src="./assests/watchlist.js"></script>   
+
+</body>
+</html>

@@ -22,8 +22,8 @@
    - Facilitate discussions, reblogging/sharing of reviews, and tagging films.
 
 6. **Media Links & External Integration**
-   - Include links to streaming platforms, trailers, reviews, and IMDb pages for each movie.
-   - Utilize IMDb or similar APIs to pull in additional movie data and ratings.
+   - Include links to streaming platforms, trailers, reviews, and TMDb pages for each movie.
+   - Utilize TMDb or similar APIs to pull in additional movie data and ratings.
 
 7. **Advanced Features (Coming Soon)**
    - Develop a recommendation engine based on user preferences and viewing history.
