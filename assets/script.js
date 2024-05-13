@@ -49,16 +49,16 @@ function displayMoviesAndShows(results) {
         card.classList.add('col-md-4', 'mb-4', 'movie-card');
         card.innerHTML = `
             <div class="card">
-            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-            <div class="card-body">
-                <h5 class="card-title">${movie.title}</h5>
-                <p class="card-text">${movie.overview}</p>
-                <div class="btn-group" role="group">
-                <button class="btn btn-primary details-button" data-movie-id="${movie.id}">Details</button>
-                <button class="btn btn-success add-to-watchlist-button" data-movie-id="${movie.id}" data-movie-title="${movie.title}" data-movie-vote="${movie.vote_average}">Add to Watchlist</button>
-                <button class="btn btn-info start-review-button" data-movie-id="${movie.id}">Start Review</button>
+                <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" class="card-img-top" alt="${result.title || result.name}">
+                <div class="card-body">
+                    <h5 class="card-title">${result.title || result.name}</h5>
+                    <p class="card-text">${result.overview}</p>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary details-button" data-movie-id="${result.id}" data-media-type="${result.media_type}">Details</button>
+                        <button class="btn btn-success add-to-watchlist-button" data-movie-id="${result.id}" data-movie-title="${result.title || result.name}" data-movie-vote="${result.vote_average}">Add to Watchlist</button>
+                        <button class="btn btn-info start-review-button" data-movie-id="${result.id}">Start Review</button>
+                    </div>
                 </div>
-            </div>
             </div>
         `;
         movieCardsContainer.appendChild(card);
@@ -266,8 +266,3 @@ function displayWatchlist() {
         watchlistContainer.appendChild(movieElement);
     });
 }
-
-
-
-// ******************************************************************************************************************************************************
-
