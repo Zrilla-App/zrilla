@@ -7,11 +7,12 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="./assests/styles.css">
+    <link rel="stylesheet" href="./assets/details.css">
     <!-- bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
     <!-- Font Awesome -->
     <!-- Important custom CSS -->
+    <link rel="stylesheet" href="./assets/styles.css">
 
 </head>
 <body>
@@ -32,7 +33,7 @@
                     <a class="nav-link" href="#">Movies</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Watchlist</a>
+                    <a class="nav-link" href="watchlist.html">Watchlist</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Login</a>
@@ -48,11 +49,11 @@
     <p>Your go-to app for all things horror and thriller movies!</p>
     <!-- Add more content here -->
 
-
 <!-- Modal div card here -->
-<div class="modal"></div>
-<!-- search bar for movies and tv shows -->
+<div class="modal"></div> 
+</div>
 
+<!-- search bar for movies and tv shows -->
 <div class="container mt-5">
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search for movies and TV shows" id="searchInput">
@@ -60,7 +61,6 @@
             <button class="btn btn-primary" type="button" id="searchButton">Search</button>
         </div>
     </div>
-
     <div class="row" id="movieCards">
         <!-- Movie cards will be dynamically added here -->
     </div>
@@ -86,13 +86,16 @@
     <button class="modal-close is-large" aria-label="close"></button>
   </div>
 
+<!-- Watchlist -->
+<div id="root"></div>
 
 <!-- Bootstrap JS and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <!-- Custom JavaScript -->
-<script src="./assests/script.js"></script>
-<script src="./assests/details.js"></script>
+<script src="./assets/script.js"></script>
+<script src="./assets/details.js"></script>
 </body>
 </html>
