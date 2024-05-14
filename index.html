@@ -7,15 +7,14 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/details.css">
+    <!-- bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <!-- Font Awesome -->
+    <!-- Important custom CSS -->
     <link rel="stylesheet" href="./assets/styles.css">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-    <!-- firebase js -->
-    <script src="./assets/firebase.js"></script>
 
-
+    
 
 </head>
 <body>
@@ -68,6 +67,9 @@
     <h1>Welcome to Zrilla</h1>
     <p>Your go-to app for all things horror and thriller movies!</p>
     <!-- Add more content here -->
+
+<!-- Modal div card here -->
+<div class="modal"></div> 
 </div>
 
 <!-- search bar for movies and tv shows -->
@@ -83,6 +85,26 @@
     </div>
 </div>
 
+<div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+  
+    <div class="modal-content">
+      <div class="box">
+        <section class="modal-card-body">
+            <h1 class="title" id="title"></h1>
+            <div id="poster"></div>
+            <p class="card-text" id="movieDetails"></p>
+            <p id="releaseDate"></p>
+            <p id="voteAverage"></p>
+            <p id="userRating"></p>
+             <!-- Add more movie details here -->
+        </section> 
+      </div>
+    </div>
+  
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
 <!-- Watchlist -->
 <div id="root"></div>
 
@@ -93,5 +115,6 @@
 
 <!-- Custom JavaScript -->
 <script src="./assets/script.js"></script>
+<script src="./assets/details.js"></script>
 </body>
 </html>

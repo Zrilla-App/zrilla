@@ -52,9 +52,8 @@ function displayMoviesAndShows(results) {
                 <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" class="card-img-top" alt="${result.title || result.name}">
                 <div class="card-body">
                     <h5 class="card-title">${result.title || result.name}</h5>
-                    <p class="card-text">${result.overview}</p>
                     <div class="btn-group" role="group">
-                        <button class="btn btn-primary details-button" data-movie-id="${result.id}" data-media-type="${result.media_type}">Details</button>
+                        <button class="btn btn-primary details-button js-modal-trigger" data-target="modal-js-example" data-movie-id="${result.id}" data-media-type="${result.media_type}" data-movie-info="${JSON.stringify(result).replace(/"/g, '&quot;')}">Details</button>
                         <button class="btn btn-success add-to-watchlist-button" data-movie-id="${result.id}" data-movie-title="${result.title || result.name}" data-movie-vote="${result.vote_average}">Add to Watchlist</button>
                         <button class="btn btn-info start-review-button" data-movie-id="${result.id}">Start Review</button>
                     </div>
@@ -83,10 +82,12 @@ function appendMoviesAndShows(results) {
                 <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" class="card-img-top" alt="${result.title || result.name}">
                 <div class="card-body">
                     <h5 class="card-title">${result.title || result.name}</h5>
-                    <p class="card-text">${result.overview}</p>
                     <p>Type: ${result.media_type === 'movie' ? 'Movie' : 'TV Show'}</p>
-                    <button class="btn btn-primary details-button" data-movie-id="${result.id}" data-media-type="${result.media_type}">Details</button>
-                </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary details-button js-modal-trigger" data-target="modal-js-example" data-movie-id="${result.id}" data-media-type="${result.media_type}" data-movie-info="${JSON.stringify(result).replace(/"/g, '&quot;')}">Details</button>
+                        <button class="btn btn-success add-to-watchlist-button" data-movie-id="${result.id}" data-movie-title="${result.title || result.name}" data-movie-vote="${result.vote_average}">Add to Watchlist</button>
+                        <button class="btn btn-info start-review-button" data-movie-id="${result.id}">Start Review</button>
+                    </div>
             </div>
         `;
         movieCardsContainer.appendChild(card);
@@ -147,65 +148,67 @@ document.getElementById('searchInput').addEventListener('keypress', function(eve
     }
 });
 
-// Function to display more details for the clicked movie card
-function expandMovieDetails(card, movie) {
-    // Construct the HTML content for the expanded details
-    const detailsContent = `
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-        <div class="card-body">
-            <h5 class="card-title">${movie.title}</h5>
-            <p class="card-text">${movie.overview}</p>
-            <p>Release Date: ${movie.release_date}</p>
-            <p>Vote Average: ${movie.vote_average}</p>
-            <!-- Add more movie details here -->
-        </div>
-    `;
+//CODE COMMENTED OUT FOR REVIEW ON MAIN//
 
-    // Update the content of the clicked card with the expanded details
-    card.innerHTML = detailsContent;
-}
+// // Function to display more details for the clicked movie card
+// function expandMovieDetails(card, movie) {
+//     // Construct the HTML content for the expanded details
+//     const detailsContent = `
+//         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
+//         <div class="card-body">
+//             <h5 class="card-title">${movie.title}</h5>
+//             <p class="card-text">${movie.overview}</p>
+//             <p>Release Date: ${movie.release_date}</p>
+//             <p>Vote Average: ${movie.vote_average}</p>
+//             <!-- Add more movie details here -->
+//         </div>
+//     `;
 
-// Function to expand card body when "Details" button is clicked
-function expandCardBody(card) {
-    const cardBody = card.querySelector('.card-body');
-    cardBody.classList.add('expanded'); // Remove height restriction
-}
+//     // Update the content of the clicked card with the expanded details
+//     card.innerHTML = detailsContent;
+// }
 
-// Event listener for "Details" button click
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('details-button')) {
-        const card = event.target.closest('.movie-card'); // Find the closest movie card
-        const movieId = event.target.dataset.movieId;
-        const mediaType = event.target.dataset.mediaType;
-        fetchMovieDetails(card, movieId, mediaType); // Pass the card, movie ID, and media type to fetch movie details
-        expandCardBody(card); // Expand the card body
-    }
-});
+// // Function to expand card body when "Details" button is clicked
+// function expandCardBody(card) {
+//     const cardBody = card.querySelector('.card-body');
+//     cardBody.classList.add('expanded'); // Remove height restriction
+// }
 
-// Function to fetch movie details by ID
-function fetchMovieDetails(card, movieId, mediaType) {
-    let url;
-    if (mediaType === 'movie') {
-        url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
-    } else {
-        url = `https://api.themoviedb.org/3/tv/${movieId}?api_key=${apiKey}`;
-    }
+// // Event listener for "Details" button click
+// document.addEventListener('click', function(event) {
+//     if (event.target.classList.contains('details-button')) {
+//         const card = event.target.closest('.movie-card'); // Find the closest movie card
+//         const movieId = event.target.dataset.movieId;
+//         const mediaType = event.target.dataset.mediaType;
+//         fetchMovieDetails(card, movieId, mediaType); // Pass the card, movie ID, and media type to fetch movie details
+//         expandCardBody(card); // Expand the card body
+//     }
+// });
 
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data); // Log the fetched movie details
-            expandMovieDetails(card, data); // Expand the clicked card with the movie details
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
-}
+// // Function to fetch movie details by ID
+// function fetchMovieDetails(card, movieId, mediaType) {
+//     let url;
+//     if (mediaType === 'movie') {
+//         url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+//     } else {
+//         url = `https://api.themoviedb.org/3/tv/${movieId}?api_key=${apiKey}`;
+//     }
+
+//     fetch(url)
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             return response.json();
+//         })
+//         .then(data => {
+//             console.log(data); // Log the fetched movie details
+//             expandMovieDetails(card, data); // Expand the clicked card with the movie details
+//         })
+//         .catch(error => {
+//             console.error('There was a problem with the fetch operation:', error);
+//         });
+// }
 
 // Event listener for "Start Review" button click
 document.addEventListener('click', function(event) {
