@@ -2,7 +2,6 @@
   --background-color: #131217 ;
 }
 
-
 body {
     background-color: var(--background-color);
     font-family: Arial, sans-serif;
@@ -37,6 +36,7 @@ nav a:hover {
   background-color: rgb(81, 11, 11) !important;
   border-color: rgb(241, 215, 215) !important;
 }
+
 img {
   border-radius: 10px;
 }
