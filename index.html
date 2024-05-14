@@ -14,6 +14,8 @@
     <!-- Important custom CSS -->
     <link rel="stylesheet" href="./assets/styles.css">
 
+    
+
 </head>
 <body>
 
@@ -42,6 +44,23 @@
         </div>
     </div>
 </nav>
+
+<!-- Login Form -->
+<div id="loginForm" class="container mt-5">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="button" class="btn btn-secondary" id="registerButton">Register</button>
+    </form>
+</div>
 
 <!-- Main Content Area -->
 <div class="container mt-5">
