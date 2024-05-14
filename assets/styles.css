@@ -4,6 +4,8 @@ body {
     color: rgb(92, 92, 92);
     margin: 0;
     padding: 0;
+    height: 100vh;
+    
 }
 .backCard {
     background-color: rgb(161, 54, 54);
