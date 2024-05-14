@@ -148,6 +148,8 @@ document.getElementById('searchInput').addEventListener('keypress', function(eve
     }
 });
 
+
+
 //CODE COMMENTED OUT FOR REVIEW ON MAIN//
 
 // // Function to display more details for the clicked movie card
