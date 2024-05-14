@@ -1,11 +1,48 @@
+:root {
+  --background-color: #131217 ;
+}
+
+
 body {
-    background-color: #191133;
+    background-color: var(--background-color);
     font-family: Arial, sans-serif;
-    color: rgb(92, 92, 92);
+    color: rgb(173, 185, 199) !important;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    
+    height: 100%;
+    font-family: 'Jersey 10', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+nav {
+    background-color: var(--background-color) !important;
+    background-image: url('./images/headerOne.svg');
+}
+
+.navbar-brand {
+  font-size: 100px !important;
+}
+
+nav a {
+  background-color: black;
+  color: rgb(210, 208, 208) !important;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+  align-items: center;
+}
+
+nav a:hover {
+  background-color: rgb(81, 11, 11) !important;
+  border-color: rgb(241, 215, 215) !important;
+}
+img {
+  border-radius: 10px;
+}
+
+p {
+  padding: 10px;
 }
 .backCard {
     background-color: rgb(161, 54, 54);
@@ -20,3 +57,15 @@ body {
     font-size: 42px !important;
     cursor: pointer !important;
   }
+
+input::placeholder {
+  font-family: 'Jersey 10', sans-serif; /* Updated font family name */
+  font-size: 20px;
+  color: #ab9f9f !important;
+}
+
+button:hover {
+  background-color: rgb(81, 11, 11) !important;
+  border: red !important;
+}
+

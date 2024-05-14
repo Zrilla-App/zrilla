@@ -92,3 +92,4 @@ function updateMovieDetails(poster, movieTitle, overview, releaseDate, voteAvera
     releaseDateEl.innerHTML = `<p>Release Date: ${releaseDate}</p>`;
     voteAverageEl.innerHTML = `<p>Vote Average: ${voteAverage}</p>`;
 }
+
