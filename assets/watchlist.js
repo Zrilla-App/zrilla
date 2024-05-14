@@ -1,189 +1,199 @@
-const apiKey = 'b2efbdbbc6bd81460ab1aee451452cf2'; // Replace 'YOUR_API_KEY' with your TMDb API key
-
 // Function to display watchlist on the page
 function displayWatchlist() {
-    // Retrieve watchlist from localStorage
-    const watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
-    const folders = JSON.parse(localStorage.getItem('folders')) || [];
+  // Retrieve watchlist from localStorage
+  const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+  const folders = JSON.parse(localStorage.getItem("folders")) || [];
+  const watchlistOrder = JSON.parse(localStorage.getItem("watchlistOrder")) || [];
 
-    // Display each folder
-    folders.forEach(folderName => {
-        const folderElement = document.createElement('div');
-        folderElement.classList.add('watchlist-container', 'folder');
 
-        const watchlistTitle = document.createElement('div');
-        watchlistTitle.classList.add('watchlist-title');
-        watchlistTitle.textContent = folderName;
+  // Display each folder
+  folders.forEach((folderName) => {
+    const folderElement = document.createElement("div");
+    folderElement.classList.add("watchlist-container", "folder");
 
-        const watchlistItems = document.createElement('div');
-        watchlistItems.classList.add('watchlist-items');
+    const watchlistTitle = document.createElement("div");
+    watchlistTitle.classList.add("watchlist-title");
+    watchlistTitle.textContent = folderName;
 
-        // Append the title to the folder element
-        folderElement.appendChild(watchlistTitle);
+    const watchlistItems = document.createElement("div");
+    watchlistItems.classList.add("watchlist-items");
 
-        // Append the delete button for the folder
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete Folder';
-        deleteButton.classList.add('delete-folder-button');
-        deleteButton.addEventListener('click', function() {
-            folderElement.remove();
-        });
+    // Append the title to the folder element
+    folderElement.appendChild(watchlistTitle);
 
-        // Append the delete button to the folder element
-        folderElement.appendChild(deleteButton);
-
-        // Append the items to the folder element
-        folderElement.appendChild(watchlistItems);
-
-        const watchlistContainer = document.getElementById('generalWatchlist');
-        watchlistContainer.appendChild(folderElement);
+    // Append the delete button for the folder
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete Folder";
+    deleteButton.classList.add("delete-folder-button");
+    deleteButton.addEventListener("click", function () {
+      folderElement.remove();
     });
 
-    // Function to add a new folder
-function addFolder() {
-    // Prompt the user for the folder name
-    const folderName = prompt("Enter the name of the folder:");
+    // Append the delete button to the folder element
+    folderElement.appendChild(deleteButton);
 
-    // Check if the user entered a folder name
-    if (folderName) {
-        // Create a new folder element
-        const folderElement = document.createElement('div');
-        folderElement.classList.add('watchlist-container', 'folder');
+    // Append the items to the folder element
+    folderElement.appendChild(watchlistItems);
 
-        const watchlistTitle = document.createElement('div');
-        watchlistTitle.classList.add('watchlist-title');
-        watchlistTitle.textContent = folderName;
+    const watchlistContainer = document.getElementById("generalWatchlist");
+    watchlistContainer.appendChild(folderElement);
+  });
 
-        const watchlistItems = document.createElement('div');
-        watchlistItems.classList.add('watchlist-items');
+  // Function to add a new folder
 
-        // Append the title to the folder element
-        folderElement.appendChild(watchlistTitle);
+  // Display each movie in the watchlist
+  watchlist.forEach((movie) => {
+    const watchlistContainer = document
+      .getElementById("generalWatchlist")
+      .querySelector(".watchlist-items");
 
-        // Append the delete button for the folder
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete Folder';
-        deleteButton.classList.add('delete-folder-button');
-        deleteButton.addEventListener('click', function() {
-            folderElement.remove();
-        });
+    const movieElement = document.createElement("div");
+    movieElement.classList.add("watch-card");
+    movieElement.setAttribute("data-id", movie.id);
+    const movieTitle = movie.title || "Title Not Available";
+    const voteAverage = movie.vote_average || "Vote Average Not Available";
+    movieElement.textContent = `${movieTitle} - Vote Average: ${voteAverage}`;
+    watchlistContainer.appendChild(movieElement);
+  });
 
-        // Append the delete button to the folder element
-        folderElement.appendChild(deleteButton);
+  // Initialize SortableJS for nested sortables
+  initializeSortable();
 
-        // Append the items to the folder element
-        folderElement.appendChild(watchlistItems);
+  // Add event listener to delete watchlist items
+  document.querySelectorAll(".watchlist-item-delete").forEach((item) => {
+    item.addEventListener("click", deleteWatchlistItem);
+  });
 
-        // Append the folder element to the watchlist container
-        const watchlistContainer = document.getElementById('generalWatchlist');
-        watchlistContainer.appendChild(folderElement);
-
-        // Save folder in localStorage
-        const folders = JSON.parse(localStorage.getItem('folders')) || [];
-        folders.push(folderName);
-        localStorage.setItem('folders', JSON.stringify(folders));
-
-        // Initialize SortableJS for the newly added folder
-        initializeSortable();
-    } else {
-        alert("Folder name cannot be empty!");
-    }
+  // Add event listener to delete folder buttons
+  document.querySelectorAll(".delete-folder-button").forEach((button) => {
+    button.addEventListener("click", function () {
+      button.parentElement.remove();
+    });
+  });
 }
-
-    // Display each movie in the watchlist
-    watchlist.forEach(movie => {
-        const watchlistContainer = document.getElementById('generalWatchlist').querySelector('.watchlist-items');
-
-        const movieElement = document.createElement('div');
-        movieElement.classList.add('watch-card');
-        const movieTitle = movie.title || 'Title Not Available';
-        const voteAverage = movie.vote_average || 'Vote Average Not Available';
-        movieElement.textContent = `${movieTitle} - Vote Average: ${voteAverage}`;
-        watchlistContainer.appendChild(movieElement);
-    });
-
-    // Initialize SortableJS for nested sortables
-    initializeSortable();
-
-    // Add event listener to delete watchlist items
-    document.querySelectorAll('.watchlist-item-delete').forEach(item => {
-        item.addEventListener('click', deleteWatchlistItem);
-    });
-
-    // Add event listener to delete folder buttons
-    document.querySelectorAll('.delete-folder-button').forEach(button => {
-        button.addEventListener('click', function() {
-            button.parentElement.remove();
-        });
-    });
-}
-
-    
-
-
-
 
 // Function to delete a watchlist item
 function deleteWatchlistItem(event) {
-    event.target.parentElement.remove();
+  event.target.parentElement.remove();
+}
+
+function addFolder() {
+  // Prompt the user for the folder name
+  const folderName = prompt("Enter the name of the folder:");
+
+  // Check if the user entered a folder name
+  if (folderName) {
+    // Create a new folder element
+    const folderElement = document.createElement("div");
+    folderElement.classList.add("watchlist-container", "folder");
+
+    const watchlistTitle = document.createElement("div");
+    watchlistTitle.classList.add("watchlist-title");
+    watchlistTitle.textContent = folderName;
+
+    const watchlistItems = document.createElement("div");
+    watchlistItems.classList.add("watchlist-items");
+
+    // Append the title to the folder element
+    folderElement.appendChild(watchlistTitle);
+
+    // Append the delete button for the folder
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete Folder";
+    deleteButton.classList.add("delete-folder-button");
+    deleteButton.addEventListener("click", function () {
+      folderElement.remove();
+    });
+
+    // Append the delete button to the folder element
+    folderElement.appendChild(deleteButton);
+
+    // Append the items to the folder element
+    folderElement.appendChild(watchlistItems);
+
+    // Append the folder element to the watchlist container
+    const watchlistContainer = document.getElementById("generalWatchlist");
+    watchlistContainer.appendChild(folderElement);
+
+    // Save folder in localStorage
+    const folders = JSON.parse(localStorage.getItem("folders")) || [];
+    folders.push(folderName);
+    localStorage.setItem("folders", JSON.stringify(folders));
+
+    // Initialize SortableJS for the newly added folder
+    initializeSortable();
+  } else {
+    alert("Folder name cannot be empty!");
+  }
 }
 
 // Add event listener to delete watchlist items
-document.querySelectorAll('.watchlist-item-delete').forEach(item => {
-    item.addEventListener('click', deleteWatchlistItem);
+document.querySelectorAll(".watchlist-item-delete").forEach((item) => {
+  item.addEventListener("click", deleteWatchlistItem);
 });
-
 
 // Add event listener to the "Add Folder" button
-document.getElementById('addFolderButton').addEventListener('click', function() {
+document
+  .getElementById("addFolderButton")
+  .addEventListener("click", function () {
     addFolder();
-});
+  });
 
-
-    // Function to delete a folder
+// Function to delete a folder
 function deleteFolder(folderName) {
-    // Find the folder element with the specified name
-    const folderElements = document.getElementById('generalWatchlist').querySelectorAll('.folder');
-    folderElements.forEach(folderElement => {
-        if (folderElement.textContent === folderName) {
-            // Remove the folder element
-            folderElement.remove();
+  // Find the folder element with the specified name
+  const folderElements = document
+    .getElementById("generalWatchlist")
+    .querySelectorAll(".folder");
+  folderElements.forEach((folderElement) => {
+    if (folderElement.textContent === folderName) {
+      // Remove the folder element
+      folderElement.remove();
 
-            // Remove folder from localStorage
-            const folders = JSON.parse(localStorage.getItem('folders')) || [];
-            const index = folders.indexOf(folderName);
-            if (index !== -1) {
-                folders.splice(index, 1);
-                localStorage.setItem('folders', JSON.stringify(folders));
-            }
-        }
-    });
+      // Remove folder from localStorage
+      const folders = JSON.parse(localStorage.getItem("folders")) || [];
+      const index = folders.indexOf(folderName);
+      if (index !== -1) {
+        folders.splice(index, 1);
+        localStorage.setItem("folders", JSON.stringify(folders));
+      }
+    }
+  });
 }
 
-
-    // Function to initialize SortableJS for nested sortables
-    function initializeSortable() {
-        const containers = document.querySelectorAll('.watchlist-items');
-        containers.forEach(container => {
-            new Sortable(container, {
-                animation: 150,
-                handle: '.watch-card',
-                ghostClass: 'sortable-ghost',
-                fallbackClass: 'sortable-fallback',
-                swapThreshold: 0.65,
-                // multiDrag: true,
-                // multiDragKey: 'ctrlKey',
-                group: 'nested',
-                sort: true,
-                nested: true,
-            });
-        });
-    }
-
-    // Display watchlist on the page when the document is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        displayWatchlist();
+// Function to initialize SortableJS for nested sortables
+function initializeSortable() {
+  const containers = document.querySelectorAll(".watchlist-items");
+  containers.forEach((container) => {
+    new Sortable(container, {
+      animation: 150,
+      handle: ".watch-card",
+      ghostClass: "sortable-ghost",
+      fallbackClass: "sortable-fallback",
+      swapThreshold: 0.65,
+      // multiDrag: true,
+      // multiDragKey: 'ctrlKey',
+      group: "nested",
+      sort: true,
+      nested: true,
+      onEnd: saveOrder,
     });
+  });
+}
 
-    // Initialize SortableJS for nested sortables
-    initializeSortable();
+// Function to save the order of nested watchlist and folders to localStorage
+function saveOrder() {
+    const watchlistContainer = document.querySelector('.watchlist-items');
+    const items = watchlistContainer.querySelectorAll('.watch-card');
+    const order = Array.from(items).map((item) => item.getAttribute('data-id'));
+    localStorage.setItem('watchlistOrder', JSON.stringify(order));
+    console.log('order', order);
+}
+
+// Display watchlist on the page when the document is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  displayWatchlist();
+});
+
+// Initialize SortableJS for nested sortables
+initializeSortable();
