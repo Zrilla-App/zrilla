@@ -31,8 +31,10 @@ body {
     cursor: grab; /* Cursor style for draggable items */
     background-color: #2a442d; /* Background color */
     width: 25%; /* Width of the card */
-    
+}
 
+.watch-card:hover {
+    background-color: rgb(106, 122, 12); /* Background color */
 }
 
 .watchlist-title {
@@ -43,3 +45,4 @@ body {
     border-radius: 5px;
 
 }
+
