@@ -1,6 +1,18 @@
 # Zrilla - Your Ultimate Thriller & Horror Movie Companion
 
+## Link to application: 
+
 Welcome to Zrilla, your go-to app for all things horror and thriller movies! Whether you're a seasoned horror aficionado or just dipping your toes into the chilling waters of the genre, Zrilla has everything you need to keep track of your favorite films, rate them, and share your thoughts with fellow horror enthusiasts. With Zrilla, you can dive into the darkest corners of cinema and emerge unscathed... or maybe not.
+
+## What is Implemented
+
+- **Server Side API's** TMDB API and the Youtube API.
+- **API's Used** SortableJS, JQuery, 
+- **Frameworks Used** Tailwind CSS, Bootstrap CSS, Bulma CSS
+- **Fully Responsive**
+- **Client-Side Storage** for persistent data
+- **Polished UI**
+
 
 ## User Story
 
@@ -14,13 +26,15 @@ Welcome to Zrilla, your go-to app for all things horror and thriller movies! Whe
 
 - **Rating System:** Rate the movies you've watched based on various criteria such as story, acting, cinematography, and overall scariness. Share your ratings with friends and see how your opinions stack up against theirs.
 
-- **Review & Discussion:** Share your thoughts and opinions on the movies you've watched. Discuss plot twists, analyze character development, and debate the merits of practical effects versus CGI with other users.
-
 - **Media Links:** Save links to streaming platforms, trailers, reviews, or any other relevant media related to the movies in your collection. Easily access additional content without leaving the app.
+
+- **Trailers and Indie Horror:** Search for movie/tv trailers via integrated Youtube functionality and also view indie short horror media. 
+
+## Coming Soon
 
 - **Secure Data Storage:** Rest assured that your movie ratings, reviews, and watchlists are safely stored on our secure servers. Your privacy and data security are our top priorities.
 
-## Coming Soon
+- **Review & Discussion:** Share your thoughts and opinions on the movies you've watched. Discuss plot twists, analyze character development, and debate the merits of practical effects versus CGI with other users.
 
 - **Recommendation Engine:** Receive personalized recommendations based on your movie preferences and viewing history. Discover hidden gems and new releases tailored to your taste.
 
@@ -34,4 +48,4 @@ Stay tuned for these exciting features and more as Zrilla continues to evolve an
 
 ## Get Started
 
-Ready to embark on a cinematic journey into the heart of darkness? Download HorrorFlix now and unleash your inner horror aficionado. Whether you're craving a psychological thriller, a supernatural scarefest, or a blood-soaked slasher flick, HorrorFlix has something to satisfy every craving. Let the screams begin!
+Ready to embark on a cinematic journey into the heart of darkness? Download Zrilla now and unleash your inner horror aficionado. Whether you're craving a psychological thriller, a supernatural scarefest, or a blood-soaked slasher flick, HorrorFlix has something to satisfy every craving. Let the screams begin!
