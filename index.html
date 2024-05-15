@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,153 +17,154 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
     <!-- Important custom CSS -->
-    <link rel="stylesheet" href="./assets/styles.css">    
+    <link rel="stylesheet" href="./assets/styles.css">
 
 </head>
+
 <body>
 
-<!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg">
-    <div class="container" >
-        <a class="navbar-brand" href="#">Zrilla</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Movies</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="watchlist.html">Watchlist</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-            </ul>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Zrilla</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="watchlist.html">Watchlist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
+<!--  -->
 
-
-<!-- Main Content Area -->
-<div class="container mt-5">
-    <h1>Welcome to Zrilla</h1>
-    <p>Your go-to app for all things horror and thriller movies!</p>
-    <!-- Add more content here -->
-
-
-    <section class="section">
+    <!-- Main Layout -->
+    <div id="Sidebar">
         <div class="container">
             <h1 class="title has-text-centered">Top 5 Horror and Thriller Movies of the Week</h1>
-            <div class="box section">
-                <h2 class="title is-4">Top 5 Horror and Thriller Movies</h2>
+            <div class="box">
+                <!-- <h2 class="title is-4">Top 5 Horror and Thriller Movies</h2> -->
                 <ul id="movies" class="content"></ul>
             </div>
-            <!-- <div class="box section">
-                <h2 class="title is-4">Top 5 Horror and Thriller TV Shows</h2>
-                <ul id="tv-shows" class="content"></ul>
-            </div> -->
         </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="mainContent container mt-5">
+        <h1>Welcome to Zrilla</h1>
+        <p>Your go-to app for all things horror and thriller movies!</p>
+        
+        <!-- Add more content here -->
+        <section class="section">
+            <div class="container mt-5">
+                <h1 class="title has-text-centered">Search Horror YouTube Content</h1>
+                <div class="field has-addons">
+                    <div class="control is-expanded">
+                        <input id="search-input" class="input" type="text"
+                            placeholder="Search for horror videos...">
+                    </div>
+                    <div class="control">
+                        <button id="search-button" class="button is-danger">Search</button>
+                    </div>
+                </div>
+                <div id="results" class="content">
+                    <!-- Search results will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal div card here -->
+        <div class="modal"></div>
+
+        <!-- search bar for movies and tv shows -->
         <div class="container mt-5">
             <h1 class="title has-text-centered">Search Horror YouTube Content</h1>
-            <div class="field has-addons">
-                <div class="control is-expanded">
-                    <input id="search-input" class="input" type="text" placeholder="Search for horror videos...">
-                </div>
-                <div class="control">
-                    <button id="search-button" class="button is-danger">Search</button>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search for movies and TV shows" id="searchInput">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" id="searchButton">Search</button>
                 </div>
             </div>
-            <div id="results" class="content">
-                <!-- Search results will be inserted here -->
+            <div class="row" id="movieCards">
+                <!-- Movie cards will be dynamically added here -->
             </div>
         </div>
-    </section>
+    </div>
+<!--  -->
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
 
-<!-- Modal div card here -->
-<div class="modal"></div> 
-</div>
-
-<!-- search bar for movies and tv shows -->
-<div class="container mt-5">
-    <h1 class="title has-text-centered">Search Horror YouTube Content</h1>
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search for movies and TV shows" id="searchInput">
-        <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="searchButton">Search</button>
+        <div class="modal-content">
+            <div class="box">
+                <section class="modal-card-body">
+                    <h1 class="title" id="title"></h1>
+                    <div id="poster"></div>
+                    <p class="card-text" id="movieDetails"></p>
+                    <p id="releaseDate"></p>
+                    <p id="voteAverage"></p>
+                    <p id="userRating"></p>
+                    <!-- Add more movie details here -->
+                </section>
+            </div>
         </div>
-    </div>
-    <div class="row" id="movieCards">
-        <!-- Movie cards will be dynamically added here -->
-    </div>
-</div>
 
-<div id="modal-js-example" class="modal">
-    <div class="modal-background"></div>
-
-    <div class="modal-content">
-    <div class="box">
-        <section class="modal-card-body">
-            <h1 class="title" id="title"></h1>
-            <div id="poster"></div>
-            <p class="card-text" id="movieDetails"></p>
-            <p id="releaseDate"></p>
-            <p id="voteAverage"></p>
-            <p id="userRating"></p>
-            <!-- Add more movie details here -->
-        </section> 
-    </div>
+        <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
-    <button class="modal-close is-large" aria-label="close"></button>
-</div>
+    <!-- Watchlist -->
+    <div id="root"></div>
 
-<!-- Watchlist -->
-<div id="root"></div>
-
-<footer class="bg-gray-800 text-white py-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <div class="text-sm">
-            Made with <span class="text-purple-500">&hearts;</span> by: <a href="https://github.com/Zrilla-App/zrilla" class="underline">Chloe, Tony, & Nick</a>
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-sm">
+                Made with <span class="text-purple-500">&hearts;</span> by: <a
+                    href="https://github.com/Zrilla-App/zrilla" class="underline">Chloe, Tony, & Nick</a>
+            </div>
+            <div class="flex space-x-4">
+                <a href="https://github.com/Zrilla-App/zrilla" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600">
+                    <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.165c-3.338.725-4.042-1.613-4.042-1.613-.546-1.387-1.332-1.757-1.332-1.757-1.087-.744.083-.729.083-.729 1.203.085 1.837 1.236 1.837 1.236 1.07 1.834 2.809 1.304 3.494.997.11-.776.42-1.305.763-1.605-2.665-.305-5.466-1.333-5.466-5.933 0-1.31.47-2.38 1.235-3.22-.123-.306-.535-1.532.117-3.19 0 0 1.005-.322 3.3 1.23a11.51 11.51 0 013.005-.403c1.02.004 2.045.138 3.005.403 2.28-1.552 3.285-1.23 3.285-1.23.655 1.658.243 2.884.12 3.19.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.43.37.824 1.102.824 2.22v3.293c0 .32.216.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                </a>
+                <a href="https://github.com/charium" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600">
+                    <img src="./assets/images/chloe.jpg" alt="Profile 1" class="h-6 w-6 rounded-full">
+                </a>
+                <a href="https://github.com/ndzamboni" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600">
+                    <img src="./assets/images/goosezam.PNG" alt="Profile 2" class="h-6 w-6 rounded-full">
+                </a>
+                <a href="https://github.com/phelpstony" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600">
+                    <img src="./assets/images/tony.png" alt="Profile 3" class="h-6 w-6 rounded-full">
+                </a>
+            </div>
         </div>
-        <div class="flex space-x-4">
-            <a href="https://github.com/Zrilla-App/zrilla" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600">
-                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577v-2.165c-3.338.725-4.042-1.613-4.042-1.613-.546-1.387-1.332-1.757-1.332-1.757-1.087-.744.083-.729.083-.729 1.203.085 1.837 1.236 1.837 1.236 1.07 1.834 2.809 1.304 3.494.997.11-.776.42-1.305.763-1.605-2.665-.305-5.466-1.333-5.466-5.933 0-1.31.47-2.38 1.235-3.22-.123-.306-.535-1.532.117-3.19 0 0 1.005-.322 3.3 1.23a11.51 11.51 0 013.005-.403c1.02.004 2.045.138 3.005.403 2.28-1.552 3.285-1.23 3.285-1.23.655 1.658.243 2.884.12 3.19.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.43.37.824 1.102.824 2.22v3.293c0 .32.216.694.825.576C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
-                </svg>
-            </a>
-            <a href="https://github.com/charium" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600">
-                <img src="./assets/images/chloe.jpg" alt="Profile 1" class="h-6 w-6 rounded-full">
-            </a>
-            <a href="https://github.com/ndzamboni" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600">
-                <img src="./assets/images/goosezam.PNG" alt="Profile 2" class="h-6 w-6 rounded-full">
-            </a>
-            <a href="https://github.com/phelpstony" class="bg-gray-700 p-2 rounded-full hover:bg-gray-600">
-                <img src="./assets/images/tony.png" alt="Profile 3" class="h-6 w-6 rounded-full">
-            </a>
-        </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- Bootstrap JS and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- Custom JavaScript -->
-<script src="./assets/script.js"></script>
-<script src="./assets/details.js"></script>
-<script src="./assets/top5.js"></script>
-<script src="./assets/youtube.js"></script>
-<!-- <script src="./assets/login.js"></script> -->
-<!-- <script src="./assets/watchlist.js"></script> -->
+    <!-- Custom JavaScript -->
+    <script src="./assets/script.js"></script>
+    <script src="./assets/details.js"></script>
+    <script src="./assets/top5.js"></script>
+    <script src="./assets/youtube.js"></script>
+    <!-- <script src="./assets/login.js"></script> -->
+    <!-- <script src="./assets/watchlist.js"></script> -->
 </body>
+
 </html>
