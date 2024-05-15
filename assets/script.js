@@ -1,4 +1,4 @@
-const apiKey = 'b2efbdbbc6bd81460ab1aee451452cf2'; // Replace 'YOUR_API_KEY' with your TMDb API key
+const apiKey = '990ce9b2aa761b81582ca6e9a768d0be'; // Replace 'YOUR_API_KEY' with your TMDb API key
 let currentPage = 1; // Track the current page of search results
 const resultsPerPage = 3; // Number of results to display per page
 let originalSearchQuery = ''; // Store the original search query

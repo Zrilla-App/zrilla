@@ -61,7 +61,7 @@ p {
 input::placeholder {
   font-family: 'Jersey 10', sans-serif; /* Updated font family name */
   font-size: 20px;
-  color: #ab9f9f !important;
+  color: black !important;
 }
 
 button:hover {
@@ -69,3 +69,13 @@ button:hover {
   border: red !important;
 }
 
+.input-group {
+  margin: 10px;
+  padding: 10%;
+}
+
+
+
+#searchInput {
+  color: black !important;
+}
