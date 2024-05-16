@@ -29,9 +29,23 @@ nav {
 
     
 }
-
 .navbar-brand {
   font-size: 100px !important;
+}
+
+.navbar-toggler {
+  background-color: rgb(210, 208, 208) !important; /* Set background color */
+  height: 30px; /* Adjust height of the toggler */
+  border: none; /* Remove default border */
+  align-items: center !important;
+
+}
+
+.navbar-toggler-icon {
+  background-image: url('./images/toggle.png') !important; /* Set custom image for the toggler icon */
+  width: 20px; /* Adjust width of the icon */
+  height: 20px; /* Adjust height of the icon */
+  align-items: center;
 }
 
 nav a {
@@ -63,8 +77,9 @@ p {
 
 input {
   background-color: rgb(247, 242, 242) !important;
-  font-size: 20px;
-  color: blackl !important;
+  font-size: 20px !important;
+  color: black !important;
+  font-family: 'Jersey 10', sans-serif;
 }
 
 input::placeholder {
