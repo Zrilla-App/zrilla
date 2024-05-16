@@ -14,6 +14,22 @@ body {
     text-align: center;
 }
 
+h1 {
+  font-size: 70px;
+}
+
+h1 p {
+  margin-top: -5px;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+div.box.section {
+  padding: 20px;
+  background-color: #191720 !important;
+}
+
+
 nav {
     background-color: var(--background-color) !important;
     background-image: url('./images/headerOne.svg');
@@ -70,11 +86,6 @@ p {
   padding: 10px;
 }
 
-.backCard {
-    background-color: rgb(161, 54, 54);
-    
-}
-
 input {
   background-color: rgb(247, 242, 242) !important;
   font-size: 20px !important;
@@ -101,10 +112,6 @@ button:hover {
   background-color: #007bff;
 }
 
-.container {
-  /* margin-bottom: 200px; */
-}
-
 .input-group {
   margin: 10px;
   padding: 0 auto;
@@ -116,6 +123,10 @@ button:hover {
 
 #youtubeSearch {
   margin-bottom: 200px;
+}
+
+#youtubeSearch button {
+  height: 100%
 }
 
 #movieSearch {
@@ -130,8 +141,6 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  justify-content: center;
-
 }
 
 .text-sm {
