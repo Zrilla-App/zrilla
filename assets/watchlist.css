@@ -6,51 +6,75 @@ body {
     padding: 0;
 }
 
-/* Style for movie items */
-.movie-item {
+/* Container to center the main content */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.watchlist-container {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.watchlist-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    background-color: #d5caca;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.watchlist-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.movie-item, .watch-card {
+    width: 100%;
+    max-width: 480px;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(131, 124, 124, 0.1);
-    cursor: grab; /* Cursor style for draggable items */
-    background-color: #f0f0f0; /* Background color */
-}
-
-/* Hover effect */
-.movie-item:hover {
-    transform: translateY(-2px);
-    transition: transform 0.3s ease;
-    background-color: #e0e0e0; /* Darker background color on hover */
+    cursor: grab;
+    background-color: #f0f0f0;
 }
 
 .watch-card {
-    padding: 5px; /* Smaller padding */
-    margin-bottom: 10px; /* Space between items */
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(207, 200, 200, 0.2);
-    cursor: grab; /* Cursor style for draggable items */
-    background-color: #242429; /* Background color */
+    background-color: #242429;
     border: 1px solid rgb(169, 166, 176);
-    width: 25%; /* Width of the card */
-    margin-left: 150px;
+}
+
+.movie-item:hover, .watch-card:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+    background-color: #e0e0e0;
 }
 
 .watch-card:hover {
-    background-color: rgb(106, 122, 12); /* Background color */
+    background-color: rgb(106, 122, 12);
 }
-
-.watchlist-title {
-    font-size: 24px; /* Larger font size */
-    margin-bottom: 10px; /* Space between title and items */
-    background-color: #d5caca; /* Background color */
-    color: black;
-    width: 30%; /* Width of the card */
-    border-radius: 5px;
-    margin-left: 100px;
-
-}
-
-.mainContent {
-    margin: 100px;
-}
-
