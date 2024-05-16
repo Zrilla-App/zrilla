@@ -3,8 +3,7 @@ function displayWatchlist() {
   // Retrieve watchlist from localStorage
   const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
   const folders = JSON.parse(localStorage.getItem("folders")) || [];
-  const watchlistOrder = JSON.parse(localStorage.getItem("watchlistOrder")) || [];
-
+console.log('watchlist ==> ', watchlist)
 
   // Display each folder
   folders.forEach((folderName) => {
@@ -186,8 +185,12 @@ function saveOrder() {
     const watchlistContainer = document.querySelector('.watchlist-items');
     const items = watchlistContainer.querySelectorAll('.watch-card');
     const order = Array.from(items).map((item) => item.getAttribute('data-id'));
-    localStorage.setItem('watchlistOrder', JSON.stringify(order));
-    console.log('order', order);
+    
+    let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+    watchlist.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
+    console.log('watchlist ==> ', watchlist);
 }
 
 // Display watchlist on the page when the document is loaded
