@@ -93,3 +93,30 @@ function updateMovieDetails(poster, movieTitle, overview, releaseDate, voteAvera
     voteAverageEl.innerHTML = `<p>Vote Average: ${voteAverage}</p>`;
 }
 
+// ////////////////////////////////////////////////////////////////////
+
+//create click event to toggle between movie search and youtube search//
+
+const youtubeButton = document.getElementById('btnYoutube');
+const youtubeSearch = document.getElementById('youtubeSearch');
+
+youtubeButton.addEventListener('click', function () {
+    console.log("request to switch search function");
+    movieButton.classList.remove('inactive');
+    youtubeButton.classList.add('inactive');
+    movieSearch.classList.remove('inactive');
+    youtubeSearch.classList.add('inactive');
+
+});
+
+const movieButton = document.getElementById('btnMovie');
+const movieSearch = document.getElementById('movieSearch');
+
+movieButton.addEventListener('click', function () {
+    console.log("request to switch search function");
+    youtubeButton.classList.remove('inactive');
+    movieButton.classList.add('inactive');
+    youtubeSearch.classList.remove('inactive');
+    movieSearch.classList.add('inactive');
+
+});

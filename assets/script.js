@@ -3,6 +3,13 @@ let currentPage = 1; // Track the current page of search results
 const resultsPerPage = 3; // Number of results to display per page
 let originalSearchQuery = ''; // Store the original search query
 
+//Fixes button toggle when page loads//
+document.addEventListener('DOMContentLoaded', function() {
+    youtubeSearch.classList.add('inactive');
+    youtubeButton.classList.add('inactive');
+});
+
+
 // Function to fetch movies based on search query
 function fetchMoviesBySearch(query) {
     const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}&include_adult=false&with_genres=27|53`;
@@ -147,70 +154,6 @@ document.getElementById('searchInput').addEventListener('keypress', function(eve
         }
     }
 });
-
-
-
-//CODE COMMENTED OUT FOR REVIEW ON MAIN//
-
-// // Function to display more details for the clicked movie card
-// function expandMovieDetails(card, movie) {
-//     // Construct the HTML content for the expanded details
-//     const detailsContent = `
-//         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-//         <div class="card-body">
-//             <h5 class="card-title">${movie.title}</h5>
-//             <p class="card-text">${movie.overview}</p>
-//             <p>Release Date: ${movie.release_date}</p>
-//             <p>Vote Average: ${movie.vote_average}</p>
-//             <!-- Add more movie details here -->
-//         </div>
-//     `;
-
-//     // Update the content of the clicked card with the expanded details
-//     card.innerHTML = detailsContent;
-// }
-
-// // Function to expand card body when "Details" button is clicked
-// function expandCardBody(card) {
-//     const cardBody = card.querySelector('.card-body');
-//     cardBody.classList.add('expanded'); // Remove height restriction
-// }
-
-// // Event listener for "Details" button click
-// document.addEventListener('click', function(event) {
-//     if (event.target.classList.contains('details-button')) {
-//         const card = event.target.closest('.movie-card'); // Find the closest movie card
-//         const movieId = event.target.dataset.movieId;
-//         const mediaType = event.target.dataset.mediaType;
-//         fetchMovieDetails(card, movieId, mediaType); // Pass the card, movie ID, and media type to fetch movie details
-//         expandCardBody(card); // Expand the card body
-//     }
-// });
-
-// // Function to fetch movie details by ID
-// function fetchMovieDetails(card, movieId, mediaType) {
-//     let url;
-//     if (mediaType === 'movie') {
-//         url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
-//     } else {
-//         url = `https://api.themoviedb.org/3/tv/${movieId}?api_key=${apiKey}`;
-//     }
-
-//     fetch(url)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             console.log(data); // Log the fetched movie details
-//             expandMovieDetails(card, data); // Expand the clicked card with the movie details
-//         })
-//         .catch(error => {
-//             console.error('There was a problem with the fetch operation:', error);
-//         });
-// }
 
 // Event listener for "Start Review" button click
 document.addEventListener('click', function(event) {
