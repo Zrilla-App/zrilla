@@ -179,8 +179,17 @@ function addToWatchlist(movieId, title, vote_average) {
         console.log(watchlist);
         localStorage.setItem('watchlist', JSON.stringify(watchlist));
         console.log('Movie added to watchlist:', title);
+        
+        // Show the modal
+        document.getElementById('modalMessage').textContent = `The movie "${title}" has been added to your watchlist.`;
+        document.getElementById('watchlistModal').classList.remove('hidden');
     }
 }
+
+function closeModal() {
+    document.getElementById('watchlistModal').classList.add('hidden');
+}
+
 
 // Function to display movies on the watchlist page
 function displayWatchlist() {
