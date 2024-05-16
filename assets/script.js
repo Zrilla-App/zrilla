@@ -133,41 +133,27 @@ function displayShowMoreButton() {
     movieCardsContainer.parentNode.appendChild(buttonContainer);
 }
 
-// Event listener for search button click
-document.getElementById('searchButton').addEventListener('click', function() {
+// Function to handle search
+function handleSearch() {
     const searchInput = document.getElementById('searchInput').value.trim();
     if (searchInput !== '') {
         originalSearchQuery = searchInput; // Store the original search query
         currentPage = 1; // Reset current page when initiating a new search
         fetchMoviesBySearch(searchInput);
     }
-});
+}
+
+// Event listener for search button click
+document.getElementById('searchButton').addEventListener('click', handleSearch);
 
 // Event listener for "keypress" event on search input
 document.getElementById('searchInput').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        const searchInput = document.getElementById('searchInput').value.trim();
-        if (searchInput !== '') {
-            originalSearchQuery = searchInput; // Store the original search query
-            currentPage = 1; // Reset current page when initiating a new search
-            fetchMoviesBySearch(searchInput);
-        }
+        handleSearch();
     }
 });
 
-// Event listener for "Start Review" button click
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('start-review-button')) {
-        const movieId = event.target.dataset.movieId;
-        startReview(movieId);
-    }
-});
 
-// Function to start a review for a movie
-function startReview(movieId) {
-    // Implement logic to navigate to the review page for the specified movie
-    console.log(`Started review for movie with ID ${movieId}`);
-}
 
 // Event listener for "Add to Watchlist" button click
 document.addEventListener('click', function(event) {

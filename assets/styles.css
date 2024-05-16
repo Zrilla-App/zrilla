@@ -18,6 +18,16 @@ nav {
     background-color: var(--background-color) !important;
     background-image: url('./images/headerOne.svg');
     background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+
+    
 }
 
 .navbar-brand {
