@@ -1,3 +1,7 @@
+:root {
+    --foldermargins: 100px;
+}
+
 body {
     background-color: #191133;
     font-family: Arial, sans-serif;
@@ -30,12 +34,14 @@ body {
     box-shadow: 0 0 10px rgba(207, 200, 200, 0.2);
     cursor: grab; /* Cursor style for draggable items */
     background-color: #242429; /* Background color */
-    border: 1px solid rgb(169, 166, 176);
+    border: 1px solid rgb(64, 69, 64);
     width: 25%; /* Width of the card */
+    margin-left: 100px;
+    font-size: 90% !important;
 }
 
 .watch-card:hover {
-    background-color: rgb(106, 122, 12); /* Background color */
+    background-color: rgb(98, 125, 35); /* Background color */
 }
 
 .watchlist-title {
@@ -48,3 +54,12 @@ body {
 
 }
 
+.watchlist-container {
+    display: block;
+    margin-left: var(--foldermargins);
+}
+
+.watchlist-container.folder{
+    margin: 0 !important; 
+    margin-left: var(--foldermargins);
+}
