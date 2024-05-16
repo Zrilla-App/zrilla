@@ -13,6 +13,10 @@ Welcome to Zrilla, your go-to app for all things horror and thriller movies! Whe
 - **Client-Side Storage** for persistent data
 - **Polished UI**
 
+![Alt text](./assets/images/zrilla-home.PNG)
+![Alt text](./assets/images/zrilla-movie-search.PNG)
+![Alt text](./assets/images/zrilla-youtube-search.PNG)
+![Alt text](./assets/images/zrilla-watch-list.PNG)
 
 ## User Story
 
