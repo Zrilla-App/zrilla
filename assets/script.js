@@ -3,6 +3,13 @@ let currentPage = 1; // Track the current page of search results
 const resultsPerPage = 3; // Number of results to display per page
 let originalSearchQuery = ''; // Store the original search query
 
+//Fixes button toggle when page loads//
+document.addEventListener('DOMContentLoaded', function() {
+    youtubeSearch.classList.add('inactive');
+    youtubeButton.classList.add('inactive');
+});
+
+
 // Function to fetch movies based on search query
 function fetchMoviesBySearch(query) {
     const movieUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}&page=${currentPage}&include_adult=false&with_genres=27|53`;

@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background-color: var(--background-color)!important;
     font-family: Arial, sans-serif;
     color: rgb(245, 246, 247) !important;
     margin: 0;
@@ -55,23 +55,25 @@ img {
 p {
   padding: 10px;
 }
+
 .backCard {
     background-color: rgb(161, 54, 54);
     
 }
 
-#rating span.active {
-        color: orange !important;
-    }
-  
-  #rating span {
-    font-size: 42px !important;
-    cursor: pointer !important;
-  }
+input {
+  background-color: rgb(247, 242, 242) !important;
+  font-size: 20px;
+  color: blackl !important;
+}
 
 input::placeholder {
   font-family: 'Jersey 10', sans-serif; /* Updated font family name */
   font-size: 20px;
+  color: black !important;
+}
+
+input#searchInput.input {
   color: black !important;
 }
 
@@ -80,13 +82,34 @@ button:hover {
   border: red !important;
 }
 
-.input-group {
-  margin: 10px;
-  padding: 10%;
+.bluebtn {
+  background-color: #007bff;
 }
 
-
+.input-group {
+  margin: 10px;
+  padding: 0 auto;
+}
 
 #searchInput {
   color: black !important;
+}
+
+footer {
+  background-color: var(--background-color) !important;
+  background-image: url('./images/footer.svg');
+  height: 100px;
+  background-repeat: no-repeat;
+}
+
+.text-sm {
+  font-size: 20px !important;
+}
+
+.active {
+  display: inline;
+}
+
+.inactive {
+  display: none;
 }

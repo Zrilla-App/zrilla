@@ -58,9 +58,14 @@
 
     <section class="section">
         <div class="container">
+
             <h1 class="title has-text-centered">Top Horror and Thriller Movies of the Week</h1>
             <div class="box section">
                 <h2 class="title is-4">Top Horror and Thriller Movies</h2>
+
+            <div class="box section">
+                <h2 class="title is-4">Top 5 Horror and Thriller Movies of the Week</h2>
+
                 <ul id="movies" class="content"></ul>
             </div>
             <!-- <div class="box section">
@@ -70,8 +75,12 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="container mt-5">
+    <div class="buttonGroup">
+        <button class="button is-danger" id="btnMovie">Search Youtube Instead</button>
+        <button class="button bluebtn" id="btnYoutube">Search Movies Instead</button>
+    </div>
+
+        <div class="container mt-5" id="youtubeSearch">
             <h1 class="title has-text-centered">Search Horror YouTube Content</h1>
             <div class="field has-addons">
                 <div class="control is-expanded">
@@ -85,15 +94,14 @@
                 <!-- Search results will be inserted here -->
             </div>
         </div>
-    </section>
 
 <!-- Modal div card here -->
 <div class="modal"></div> 
 </div>
 
 <!-- search bar for movies and tv shows -->
-<div class="container mt-5">
-    <h1 class="title has-text-centered">Search Horror YouTube Content</h1>
+<div class="container mt-5" id="movieSearch">
+    <h1 class="title has-text-centered">Search Movie Content</h1>
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search for movies and TV shows" id="searchInput">
         <div class="input-group-append">
