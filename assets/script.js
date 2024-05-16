@@ -126,105 +126,27 @@ function displayShowMoreButton() {
     movieCardsContainer.parentNode.appendChild(buttonContainer);
 }
 
-// Event listener for search button click
-document.getElementById('searchButton').addEventListener('click', function() {
+// Function to handle search
+function handleSearch() {
     const searchInput = document.getElementById('searchInput').value.trim();
     if (searchInput !== '') {
         originalSearchQuery = searchInput; // Store the original search query
         currentPage = 1; // Reset current page when initiating a new search
         fetchMoviesBySearch(searchInput);
     }
-});
+}
+
+// Event listener for search button click
+document.getElementById('searchButton').addEventListener('click', handleSearch);
 
 // Event listener for "keypress" event on search input
 document.getElementById('searchInput').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        const searchInput = document.getElementById('searchInput').value.trim();
-        if (searchInput !== '') {
-            originalSearchQuery = searchInput; // Store the original search query
-            currentPage = 1; // Reset current page when initiating a new search
-            fetchMoviesBySearch(searchInput);
-        }
+        handleSearch();
     }
 });
 
 
-
-//CODE COMMENTED OUT FOR REVIEW ON MAIN//
-
-// // Function to display more details for the clicked movie card
-// function expandMovieDetails(card, movie) {
-//     // Construct the HTML content for the expanded details
-//     const detailsContent = `
-//         <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
-//         <div class="card-body">
-//             <h5 class="card-title">${movie.title}</h5>
-//             <p class="card-text">${movie.overview}</p>
-//             <p>Release Date: ${movie.release_date}</p>
-//             <p>Vote Average: ${movie.vote_average}</p>
-//             <!-- Add more movie details here -->
-//         </div>
-//     `;
-
-//     // Update the content of the clicked card with the expanded details
-//     card.innerHTML = detailsContent;
-// }
-
-// // Function to expand card body when "Details" button is clicked
-// function expandCardBody(card) {
-//     const cardBody = card.querySelector('.card-body');
-//     cardBody.classList.add('expanded'); // Remove height restriction
-// }
-
-// // Event listener for "Details" button click
-// document.addEventListener('click', function(event) {
-//     if (event.target.classList.contains('details-button')) {
-//         const card = event.target.closest('.movie-card'); // Find the closest movie card
-//         const movieId = event.target.dataset.movieId;
-//         const mediaType = event.target.dataset.mediaType;
-//         fetchMovieDetails(card, movieId, mediaType); // Pass the card, movie ID, and media type to fetch movie details
-//         expandCardBody(card); // Expand the card body
-//     }
-// });
-
-// // Function to fetch movie details by ID
-// function fetchMovieDetails(card, movieId, mediaType) {
-//     let url;
-//     if (mediaType === 'movie') {
-//         url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
-//     } else {
-//         url = `https://api.themoviedb.org/3/tv/${movieId}?api_key=${apiKey}`;
-//     }
-
-//     fetch(url)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error('Network response was not ok');
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             console.log(data); // Log the fetched movie details
-//             expandMovieDetails(card, data); // Expand the clicked card with the movie details
-//         })
-//         .catch(error => {
-//             console.error('There was a problem with the fetch operation:', error);
-//         });
-// }
-
-// Event listener for "Start Review" button click
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('start-review-button')) {
-        const movieId = event.target.dataset.movieId;
-        startReview(movieId);
-    }
-});
-
-// Function to start a review for a movie
-function startReview(movieId) {
-    // Implement logic to navigate to the review page for the specified movie
-    console.log(`Started review for movie with ID ${movieId}`);
-}
 
 // Event listener for "Add to Watchlist" button click
 document.addEventListener('click', function(event) {
