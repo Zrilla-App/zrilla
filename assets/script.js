@@ -89,7 +89,7 @@ function appendMoviesAndShows(results) {
                 <img src="https://image.tmdb.org/t/p/w500${result.poster_path}" class="card-img-top" alt="${result.title || result.name}">
                 <div class="card-body">
                     <h5 class="card-title">${result.title || result.name}</h5>
-                    <p>Type: ${result.media_type === 'movie' ? 'Movie' : 'TV Show'}</p>
+                <!--    <p>Type: ${result.media_type === 'movie' ? 'Movie' : 'TV Show'}</p> --!>
                     <div class="btn-group" role="group">
                         <button class="btn btn-primary details-button js-modal-trigger" data-target="modal-js-example" data-movie-id="${result.id}" data-media-type="${result.media_type}" data-movie-info="${JSON.stringify(result).replace(/"/g, '&quot;')}">Details</button>
                         <button class="btn btn-success add-to-watchlist-button" data-movie-id="${result.id}" data-movie-title="${result.title || result.name}" data-movie-vote="${result.vote_average}">Add to Watchlist</button>
@@ -173,6 +173,8 @@ function addToWatchlist(movieId, title, vote_average) {
     // Check if the movie is already in the watchlist
     if (watchlist.some(movie => movie.id === movieId)) {
         console.log('Movie already exists in the watchlist');
+        document.getElementById('modalMessage').textContent = `The movie "${title}" is already in your watchlist.`;
+        document.getElementById('watchlistModal').classList.remove('hidden');
     } else {
         // Add the movie to the watchlist with rating and vote average
         watchlist.push({ id: movieId, title: title, vote_average: vote_average, folder: 'generalWatchlist' });
