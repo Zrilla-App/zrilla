@@ -175,7 +175,7 @@ function addToWatchlist(movieId, title, vote_average) {
         console.log('Movie already exists in the watchlist');
     } else {
         // Add the movie to the watchlist with rating and vote average
-        watchlist.push({ id: movieId, title: title, vote_average: vote_average });
+        watchlist.push({ id: movieId, title: title, vote_average: vote_average, folder: 'generalWatchlist' });
         console.log(watchlist);
         localStorage.setItem('watchlist', JSON.stringify(watchlist));
         console.log('Movie added to watchlist:', title);
