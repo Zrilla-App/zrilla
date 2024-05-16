@@ -2,27 +2,30 @@
 
 ## Link to application: 
 
-Welcome to Zrilla, your go-to app for all things horror and thriller movies! Whether you're a seasoned horror aficionado or just dipping your toes into the chilling waters of the genre, Zrilla has everything you need to keep track of your favorite films, rate them, and share your thoughts with fellow horror enthusiasts. With Zrilla, you can dive into the darkest corners of cinema and emerge unscathed... or maybe not.
+Welcome to Zrilla, your go-to app for all things horror and thriller movies! Whether you're a seasoned horror aficionado or just dipping your toes into the genre's chilling waters, Zrilla has everything you need to keep track of your favorite films, rate them, and share your thoughts with fellow horror enthusiasts. With Zrilla, you can dive into the darkest corners of cinema and emerge unscathed... or maybe not.
 
-## What is Implemented
+## Usage
 
-- **Server Side API's** TMDB API and the Youtube API.
-- **API's Used** SortableJS, JQuery, 
-- **Frameworks Used** Tailwind CSS, Bootstrap CSS, Bulma CSS
-- **Fully Responsive**
-- **Client-Side Storage** for persistent data
-- **Polished UI**
+To use, all you have to do is navigate to this link: [zrilla.githup.com]
+Check out our repository here: [zrilla.github-.]
+
+The loaded webpage should look like this: 
 
 ![Alt text](./assets/images/zrilla-home.PNG)
 ![Alt text](./assets/images/zrilla-movie-search.PNG)
 ![Alt text](./assets/images/zrilla-youtube-search.PNG)
 ![Alt text](./assets/images/zrilla-watch-list.PNG)
 
+
 ## User Story
 
 - **As a user** of the Zrilla Horror/Thriller app, I want to discover new horror and thriller movies, save and review my watched movies, and share my reviews with the community.
 
 ## Features
+
+- **Polished UI** 
+
+- **Fully Responsive** 
 
 - **Movie Database:** Browse through a vast collection of horror and thriller movies. From classic cult favorites to the latest spine-tingling releases, Zrilla has it all.
 
@@ -53,3 +56,31 @@ Stay tuned for these exciting features and more as Zrilla continues to evolve an
 ## Get Started
 
 Ready to embark on a cinematic journey into the heart of darkness? Download Zrilla now and unleash your inner horror aficionado. Whether you're craving a psychological thriller, a supernatural scarefest, or a blood-soaked slasher flick, HorrorFlix has something to satisfy every craving. Let the screams begin!
+
+## Credits
+
+#### Collaborators: 
+    Nick Zamboni [![Nick Zamboni Github](https://github.com/ndzamboni)]
+    Chloe Hall [![Chloe Hall Github](https://github.com/charium)]
+    Tony Phelps [![Tony Phelps Github](https://github.com/phelpstony)]
+
+#### This project could not have been done without our third-party collaborators: 
+
+- **Server Side API's** 
+    TMDB API:  [![TMDB API](https://developer.themoviedb.org/docs/getting-started)]
+    Youtube API: [![Youtube API](https://developers.google.com/youtube/v3)]
+- **API's Used** 
+    SortableJS: [![SortableJS github](https://github.com/SortableJS/Sortable)]
+    JQuery: [![JQuery](https://jqueryui.com/)]
+- **Frameworks Used** 
+    Tailwind CSS: [![Tailwind CSS](https://tailwindcss.com/docs/installation)]
+    Bootstrap CSS: [![Bootstrap CSS](https://getbootstrap.com/docs/3.4/css/)]
+    Bulma CSS: [![Bulma CSS](https://bulma.io/documentation/)]
+- **Client-Side Storage** 
+    for persistent data
+
+## License
+
+Please refer to the MIT license in the repository. 
+
+--

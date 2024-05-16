@@ -32,6 +32,7 @@ body {
     background-color: #242429; /* Background color */
     border: 1px solid rgb(169, 166, 176);
     width: 25%; /* Width of the card */
+    margin-left: 150px;
 }
 
 .watch-card:hover {
@@ -45,6 +46,11 @@ body {
     color: black;
     width: 30%; /* Width of the card */
     border-radius: 5px;
+    margin-left: 100px;
 
+}
+
+.mainContent {
+    margin: 100px;
 }
 

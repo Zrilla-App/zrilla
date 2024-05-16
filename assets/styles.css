@@ -27,8 +27,12 @@ h1 p {
 div.box.section {
   padding: 20px;
   background-color: #191720 !important;
+  color: rgb(194, 189, 189) !important;
 }
 
+div.box.section h3 {
+  color: white !important;;
+}
 
 nav {
     background-color: var(--background-color) !important;
@@ -41,10 +45,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
-
-    
 }
+
 .navbar-brand {
   font-size: 100px !important;
 }
@@ -76,6 +78,11 @@ nav a {
 nav a:hover {
   background-color: rgb(81, 11, 11) !important;
   border-color: rgb(241, 215, 215) !important;
+}
+
+.card {
+  color: rgb(216, 212, 212) !important;
+  background-color: rgb(21, 21, 21) !important;
 }
 
 img {
