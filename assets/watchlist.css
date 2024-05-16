@@ -27,9 +27,10 @@ body {
     padding: 5px; /* Smaller padding */
     margin-bottom: 10px; /* Space between items */
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(207, 200, 200, 0.2);
     cursor: grab; /* Cursor style for draggable items */
-    background-color: #2a442d; /* Background color */
+    background-color: #242429; /* Background color */
+    border: 1px solid rgb(169, 166, 176);
     width: 25%; /* Width of the card */
 }
 
@@ -40,7 +41,8 @@ body {
 .watchlist-title {
     font-size: 24px; /* Larger font size */
     margin-bottom: 10px; /* Space between title and items */
-    background-color: #660808; /* Background color */
+    background-color: #d5caca; /* Background color */
+    color: black;
     width: 30%; /* Width of the card */
     border-radius: 5px;
 
