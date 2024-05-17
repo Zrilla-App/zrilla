@@ -16,12 +16,14 @@ body {
 
 h1 {
   font-size: 70px;
+  color: white;
 }
 
 h1 p {
   margin-top: -5px;
   font-size: 30px;
   margin-bottom: 20px;
+  color: white;
 }
 
 div.box.section {
@@ -91,6 +93,7 @@ img {
 
 p {
   padding: 10px;
+  color: white;
 }
 
 input {
@@ -233,4 +236,20 @@ footer {
 .video a.button {
     margin-top: 10px;
     display: inline-block;
+}
+
+.title has-text-centered {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+:root {
+  --bulma-strong-color: hsl(0deg 0% 100%);
+}
+
+.title {
+  color: hsl(0deg 0% 100%);
 }
