@@ -161,3 +161,76 @@ footer {
 .inactive {
   display: none;
 }
+
+ /* Base styles for the results container */
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#results .video {
+    flex: 1 1 calc(33.333% - 30px); /* Default to 3 items per row */
+    box-sizing: border-box;
+    background: #252525;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust layout for medium screens */
+@media (max-width: 992px) {
+    #results .video {
+        flex: 1 1 calc(50% - 30px); /* 2 items per row */
+    }
+}
+
+/* Adjust layout for small screens */
+@media (max-width: 576px) {
+    #results .video {
+        flex: 1 1 100%; /* 1 item per row */
+    }
+}
+
+/* Optional styling for the content inside each result item */
+.video article {
+    display: flex;
+    align-items: flex-start;
+}
+
+.video .media-left {
+    margin-right: 15px;
+}
+
+.video .media-content {
+    flex-grow: 1;
+}
+
+.video .media-content .content {
+    font-size: 0.9em;
+}
+
+.video img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video h3 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+}
+
+.video p {
+    font-size: 0.9em;
+    color: #cdc8c8;
+}
+
+.video a.button {
+    margin-top: 10px;
+    display: inline-block;
+}
