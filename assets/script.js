@@ -211,3 +211,5 @@ function displayWatchlist() {
         watchlistContainer.appendChild(movieElement);
     });
 }
+
+

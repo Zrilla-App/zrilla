@@ -253,3 +253,11 @@ h2 {
 .title {
   color: hsl(0deg 0% 100%);
 }
+
+.box {
+  background-color: black;
+}
+
+.modal-card-body {
+  background-color: #131217;
+}
