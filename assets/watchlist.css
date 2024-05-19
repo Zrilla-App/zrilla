@@ -17,9 +17,10 @@ body {
 }
 
 .mainContent {
-    display: flex;
+    display: inline;
     flex-direction: column;
     align-items: center;
+    /* center maincontent in the middle of the screen */
     width: 100%;
     max-width: 800px; /* Adjust as needed */
     padding: 20px;
