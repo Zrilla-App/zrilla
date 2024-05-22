@@ -1,6 +1,6 @@
 # Zrilla - Your Ultimate Thriller & Horror Movie Companion
 
-## Link to application: 
+## Link to application: https://zrilla-app.github.io/zrilla/
 
 Welcome to Zrilla, your go-to app for all things horror and thriller movies! Whether you're a seasoned horror aficionado or just dipping your toes into the genre's chilling waters, Zrilla has everything you need to keep track of your favorite films, rate them, and share your thoughts with fellow horror enthusiasts. With Zrilla, you can dive into the darkest corners of cinema and emerge unscathed... or maybe not.
 
