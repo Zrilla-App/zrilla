@@ -22,7 +22,11 @@ function displayWatchlist() {
 
   // Display each movie in the respective folder
   watchlist.forEach((movie) => {
-    const folderId = movie.folder === "generalWatchlist" ? "generalWatchlist" : escapeId(movie.folder.replace(/\s+/g, '').toLowerCase());
+    // Assign a default folder if movie.folder is undefined or not a string
+    const folderName = (movie.folder && typeof movie.folder === 'string') ? movie.folder : 'generalWatchlist';
+    const folderId = folderName === "generalWatchlist" 
+      ? "generalWatchlist" 
+      : escapeId(folderName.replace(/\s+/g, '').toLowerCase());
     const watchlistItems = document.querySelector(`#${folderId} .watchlist-items`);
     if (watchlistItems) {
       const movieElement = document.createElement("div");
@@ -169,4 +173,3 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("addFolderButton").addEventListener("click", function () {
   addFolder();
 });
-

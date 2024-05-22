@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            const query = searchInput.value.trim();
+            if (query) {
+                searchYouTube(query);
+            }
+        }
+    });
+
     async function searchYouTube(query) {
         try {
             const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=10&key=${apiKey}`);
