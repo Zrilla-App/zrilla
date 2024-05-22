@@ -1,15 +1,28 @@
+// Function to escape special characters in a string for use as an ID
+function escapeId(id) {
+  return id.replace(/[^a-zA-Z0-9_-]/g, match => {
+    return '\\' + match.charCodeAt(0).toString(16) + ' ';
+  });
+}
+
 // Function to display watchlist on the page
 function displayWatchlist() {
   const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
+  const folders = JSON.parse(localStorage.getItem("folders")) || [];
 
-  // Clear the existing watchlist items in all folders
-  document.querySelectorAll(".watchlist-items").forEach(container => {
-    container.innerHTML = '';
+  // Clear the existing dynamically added watchlist items
+  document.querySelectorAll(".watchlist-container.dynamic-folder").forEach(container => {
+    container.remove();
+  });
+
+  // Display each dynamic folder
+  folders.forEach((folder) => {
+    createFolderElement(folder);
   });
 
   // Display each movie in the respective folder
   watchlist.forEach((movie) => {
-    const folderId = movie.folder === "generalWatchlist" ? "generalWatchlist" : movie.folder.replace(/\s+/g, '').toLowerCase();
+    const folderId = movie.folder === "generalWatchlist" ? "generalWatchlist" : escapeId(movie.folder.replace(/\s+/g, '').toLowerCase());
     const watchlistItems = document.querySelector(`#${folderId} .watchlist-items`);
     if (watchlistItems) {
       const movieElement = document.createElement("div");
@@ -39,7 +52,7 @@ function saveOrder(event) {
     const movieId = movieElement.getAttribute('data-id');
     const movie = watchlist.find(m => m.id === movieId);
     if (movie) {
-      movie.folder = folderName === 'Just Watched' ? 'generalWatchlist' : folderName.replace(/\s+/g, '').toLowerCase();
+      movie.folder = folderName === 'Just Watched' ? 'generalWatchlist' : folderName;
       updatedWatchlist.push(movie);
     }
   });
@@ -73,39 +86,54 @@ function initializeSortable() {
   });
 }
 
+// Function to create a folder element
+function createFolderElement(folderName) {
+  const folderId = escapeId(folderName.replace(/\s+/g, '').toLowerCase());
+  const folderElement = document.createElement("div");
+  folderElement.classList.add("watchlist-container", "folder", "dynamic-folder");
+  folderElement.id = folderId;
+
+  const watchlistTitle = document.createElement("div");
+  watchlistTitle.classList.add("watchlist-title");
+  watchlistTitle.textContent = folderName;
+
+  const watchlistItems = document.createElement("div");
+  watchlistItems.classList.add("watchlist-items");
+
+  folderElement.appendChild(watchlistTitle);
+  folderElement.appendChild(watchlistItems);
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete Folder";
+  deleteButton.classList.add("delete-folder-button");
+  deleteButton.addEventListener("click", function () {
+    folderElement.remove();
+    deleteFolder(folderName);
+  });
+
+  folderElement.appendChild(deleteButton);
+
+  const watchlistContainer = document.querySelector(".mainContent");
+  if (watchlistContainer) {
+    watchlistContainer.appendChild(folderElement);
+  }
+}
+
 // Function to add a new folder
 function addFolder() {
   const folderName = prompt("Enter the name of the folder:");
 
   if (folderName) {
-    const folderId = folderName.replace(/\s+/g, '').toLowerCase(); // Generate an id for the folder
-    const folderElement = document.createElement("div");
-    folderElement.classList.add("watchlist-container", "folder");
-    folderElement.id = folderId;
+    const folders = JSON.parse(localStorage.getItem("folders")) || [];
+    if (folders.includes(folderName)) {
+      alert("Folder already exists!");
+      return;
+    }
 
-    const watchlistTitle = document.createElement("div");
-    watchlistTitle.classList.add("watchlist-title");
-    watchlistTitle.textContent = folderName;
+    folders.push(folderName);
+    localStorage.setItem("folders", JSON.stringify(folders));
 
-    const watchlistItems = document.createElement("div");
-    watchlistItems.classList.add("watchlist-items");
-
-    folderElement.appendChild(watchlistTitle);
-    folderElement.appendChild(watchlistItems);
-
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete Folder";
-    deleteButton.classList.add("delete-folder-button");
-    deleteButton.addEventListener("click", function () {
-      folderElement.remove();
-      deleteFolder(folderName);
-    });
-
-    folderElement.appendChild(deleteButton);
-
-    const watchlistContainer = document.getElementById("generalWatchlist").parentElement;
-    watchlistContainer.appendChild(folderElement);
-
+    createFolderElement(folderName);
     initializeSortable();
   } else {
     alert("Folder name cannot be empty!");
@@ -123,6 +151,11 @@ function deleteFolder(folderName) {
   });
   localStorage.setItem("watchlist", JSON.stringify(watchlist));
 
+  // Remove the folder from localStorage
+  let folders = JSON.parse(localStorage.getItem("folders")) || [];
+  folders = folders.filter(folder => folder !== folderName);
+  localStorage.setItem("folders", JSON.stringify(folders));
+
   displayWatchlist();
 }
 
@@ -136,3 +169,4 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("addFolderButton").addEventListener("click", function () {
   addFolder();
 });
+
